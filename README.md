@@ -13,5 +13,5 @@ Email summary to managers for approval
 Needs to be documented if employee did not log overtime
 
 ## UI
-Bootstrap formatting
-Custom CSS (Sass)
++ Bootstrap formatting
++ Custom CSS (Sass)
