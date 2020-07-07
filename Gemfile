@@ -31,3 +31,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'irb'
 gem 'rdoc'
+
+gem "devise", "~> 4.7"
+
+gem 'ruby2d'
