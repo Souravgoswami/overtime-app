@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-success custom-nav">
+	<%= link_to root_path, class: "navbar-brand" do %>
+		<div class="alternate">
+			<div class="logo-alternate-1">
+				<%= image_tag 'favicon_white.svg', width: '30px', height: '30px' %>
+			</div>
+
+			<div class="logo-alternate-2">
+				<%= image_tag 'favicon.svg', width: '30px', height: '30px', class: 'logo-alternate-2' %>
+			</div>
+		</div>
+	<% end %>
+
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="nav-item ml-auto">
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item active">
+				<%= link_to root_path, class: 'nav-link' do %>
+					Home
+					<span class="sr-only">(current)</span>
+				<% end %>
+			</li>
+
+			<li class="nav-item">
+				<%= link_to posts_path, class: 'nav-link' do %>
+					Time Entries
+					<span class="sr-only">(posts)</span>
+				<% end %>
+			</li>
+
+			<li class="nav-item">
+				<%= link_to posts_path, class: 'nav-link' do %>
+					Messages
+					<span class="sr-only">(posts)</span>
+				<% end %>
+			</li>
+
+
+
+			<li class="nav-item dropdown mr-sm-2">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Account
+				</a>
+
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+						Edit details
+					<% end %>
+
+					<a class="dropdown-item" href="#">Another action</a>
+					<div class="dropdown-divider"></div>
+					<%= link_to destroy_user_session_path, class: "dropdown-item", method: :delete do %>
+						Logout
+					<% end %>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+</nav>
