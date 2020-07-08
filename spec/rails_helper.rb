@@ -5,6 +5,10 @@ abort 'The Rails environment is running in production mode!' if Rails.env.produc
 
 %w(spec_helper rspec/rails capybara/rails database_cleaner).each(&method(:require))
 
+# Mimic loggin in with warden
+include Warden::Test::Helpers
+Warden.test_mode!
+
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |c|
