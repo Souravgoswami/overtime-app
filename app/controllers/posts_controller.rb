@@ -2,7 +2,8 @@ class PostsController < ApplicationController
 	before_action :set_post, only: [:show]
 	def index
 		@posts = Post.all
-		@table_class = %w(primary success warning danger info).each { |x| x.prepend('bg-') }
+		@table_class = %w(primary success warning danger info)
+			.each { |x| x.prepend('bg-') }
 	end
 
 	def new

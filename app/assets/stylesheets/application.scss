@@ -22,3 +22,9 @@ body, html {
 .alternate:hover .logo-alternate-2 {
 	opacity: 1 ;
 }
+
+.flex-center {
+	display: flex ;
+	justify-content: center ;
+	align-items: center ;
+}
