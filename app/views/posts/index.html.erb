@@ -4,6 +4,7 @@
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
+				<th><center>Admin Action</center></th>
 				<th><center>#</center></th>
 				<th><center>User</center></th>
 				<th><center>Date</center></th>
@@ -14,6 +15,7 @@
 		<tbody>
 			<% @posts.each_with_index do |x, i| %>
 				<tr class=<%= @table_class.rotate![0] if i.even? %>>
+					<td><%= link_to 'Edit', edit_post_path(x), id: "edit_#{x.id}" %></td>
 					<td><%= x.id %></td>
 					<td><%= x.user.full_name %></td>
 					<td><%= x.date %></td>

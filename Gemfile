@@ -14,18 +14,19 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
-    gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+		gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+		gem 'capybara'
+		gem 'database_cleaner'
+		gem 'factory_bot_rails', '~> 6.1'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.2'
+	gem 'web-console', '>= 3.3.0'
+	gem 'listen', '~> 3.2'
 
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'database_cleaner'
+	gem 'spring'
+	gem 'spring-watcher-listen', '~> 2.0.0'
+	gem 'rspec-rails'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

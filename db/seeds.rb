@@ -1,10 +1,16 @@
-N = 100
+N = 10
+
+AdminUser.create!(
+		email: "a@a.a",
+		password: "aaaaaa",
+		first_name: 'aaaaaa', last_name: 'aaaaaa'
+)
+
 N.times do |n|
 	user = User.create!(
 		email: "#{n}@x.org",
 		password: "#{n.to_s.*(6)[0..5]}",
 		first_name: n.to_s, last_name: n.to_s
-
 	)
 
 	Post.create!(
@@ -16,4 +22,4 @@ N.times do |n|
 	print "\e[2K#{n} / #{N}\r"
 end
 
-puts "100 posts have been created!"
+puts "#{N} posts have been created!"

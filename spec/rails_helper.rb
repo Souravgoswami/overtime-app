@@ -21,4 +21,5 @@ RSpec.configure do |c|
 	c.after(:each) { DatabaseCleaner.clean }
 	c.infer_spec_type_from_file_location!
 	c.filter_rails_from_backtrace!
+	c.include FactoryBot::Syntax::Methods
 end
