@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	before_action :set_post, only: [:show, :edit, :update]
+	before_action :set_post, only: [:show, :edit, :update, :destroy]
 	def index
 		@posts = Post.all
 		@table_class = %w(primary success warning danger info)
@@ -33,6 +33,14 @@ class PostsController < ApplicationController
 	end
 
 	def show
+	end
+
+	def destroy
+		if @post.delete
+			redirect_to posts_path, notice: 'The post was successfully deleted'
+		else
+			render :destroy
+		end
 	end
 
 	private
