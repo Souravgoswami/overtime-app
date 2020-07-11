@@ -25,6 +25,13 @@ describe 'navigate' do
 		end
 	end
 
+	describe 'new' do
+		it 'has a link from the homepage' do
+			visit root_path
+			click_link "newPostFromNav"
+		end
+	end
+
 	describe 'creation' do
 		before do
 			login_as(@user, scope: :user)

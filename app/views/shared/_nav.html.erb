@@ -31,6 +31,13 @@
 				<% end %>
 			</li>
 
+			<li class="nav-item <%= active?(new_post_path) %>">
+				<%= link_to new_post_path, class: 'nav-link', id: 'newPostFromNav' do %>
+					New Post
+					<span class="sr-only">(posts)</span>
+				<% end %>
+			</li>
+
 			<li class="nav-item <%= active?(posts_path) %>">
 				<%= link_to posts_path, class: 'nav-link' do %>
 					Time Entries

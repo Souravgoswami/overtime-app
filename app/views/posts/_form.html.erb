@@ -1,13 +1,7 @@
 <%= form_for @post do |f| %>
-	<div class="col-md-12">
-		<%= f.date_field :date %>
-	</div>
-
-	<div class="col-md-12">
-		<%= f.text_area :rationale %>
-	</div>
-
-	<div class="col-md-12">
-		<%= f.submit 'Save' %>
-	</div>
+	<%= f.date_field :date %>
+	<br>
+	<%= f.text_area :rationale %>
+	<br>
+	<%= f.submit 'Save' %>
 <% end %>
