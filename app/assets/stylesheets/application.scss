@@ -28,3 +28,34 @@ body, html {
 	justify-content: center ;
 	align-items: center ;
 }
+
+.centrify {
+	display: flex ;
+	align-items: center ;
+	flex-direction: column ;
+}
+
+.w-600 {
+	width: 600px ;
+}
+
+.display-block {
+	display: block ;
+}
+
+.field_with_errors {
+	display: block ;
+	color: #f55 ;
+	animation: shaky 0.05s linear 12 ;
+	transform-origin: top ;
+}
+
+@keyframes shaky {
+	0%, 100% {
+		transform: rotate(2deg) ;
+	}
+
+	50% {
+		transform: rotate(0deg) ;
+	}
+}
