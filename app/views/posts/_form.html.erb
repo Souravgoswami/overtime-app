@@ -1,7 +1,15 @@
 <%= form_for @post do |f| %>
-	<%= f.date_field :date %>
-	<br>
-	<%= f.text_area :rationale %>
-	<br>
-	<%= f.submit 'Save' %>
+	<div class="form-group">
+		<%= f.date_field :date, class: 'form-control' %>
+		<br>
+
+		<%= f.text_area :rationale, class: 'form-control' %>
+		<br>
+
+		<center>
+			<label class="btn-outline-pink-animated" data-content="Submit">
+				<%= f.submit '', style: 'display: none' %>
+			</label>
+		</center>
+	</div>
 <% end %>
