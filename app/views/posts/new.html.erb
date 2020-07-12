@@ -1,4 +1,10 @@
 <h1>New</h1>
 <br>
 
+<% if @post.errors.any? %>
+	<%= @post.errors.full_messages.each do |x| %>
+		<%= notify(x) %>
+	<% end %>
+<% end %>
+
 <%= render 'form' %>

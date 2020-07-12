@@ -7,19 +7,17 @@
 
 		<title>Time Tracker</title>
 
-		<%= stylesheet_link_tag 'btn_outline_animated', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+		<%= stylesheet_link_tag 'btn_outline_animated', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+		<%= stylesheet_link_tag 'notify-send', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_pack_tag 'notify-send', 'data-turbolinks-track': 'reload' %>
 	</head>
 
 	<body>
-		<% if notice %>
-			<p class="notice"><%= notice %></p>
-		<% end %>
-
-		<% if alert %>
-			<p class="alert"><%= alert %></p>
-		<% end %>
+		<%= flash_message_manager %>
 
 		<%= render 'shared/nav' %>
 
