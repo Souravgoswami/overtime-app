@@ -34,3 +34,6 @@ gem 'irb'
 gem 'rdoc'
 
 gem "devise", "~> 4.7"
+
+gem "administrate", "~> 0.14.0"
+gem "bourbon", "~> 7.0"
