@@ -2,7 +2,7 @@
 const PADDING = 10
 
 // Delay to start the animation after the cancel button is clicked
-const DELAY = 1500
+const DELAY = 500
 
 // Delay before notificatons auto slides out
 const LIFE = 5000

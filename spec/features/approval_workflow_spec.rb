@@ -9,16 +9,20 @@ describe 'navigate' do
 	describe 'edit' do
 		before do
 			@post = FactoryBot.create(:post1)
+			visit edit_post_path(@post)
 		end
 
-		it 'has a status that can be edited on the form' do
-			visit edit_post_path(@post)
-
+		it 'has a status that can be edited on the form by an admin' do
 			choose 'post_status_approved'
-
 			find( '#submit', visible: false).click
-
 			expect(@post.reload.status).to eq('approved')
+		end
+
+		it 'cannot be edited by a non admin' do
+			logout(:user)
+			login_as(FactoryBot.create(:user), scope: :user)
+			visit edit_post_path(@post)
+			expect(page).to_not have_content('Approved')
 		end
 	end
 end
