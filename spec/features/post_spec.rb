@@ -52,16 +52,18 @@ describe 'navigate' do
 			expect(page.status_code).to eq(200)
 		end
 
-		it 'can be created from new form page'
-			# fill_in 'post[date]', with: Date.today
-			# fill_in 'post[rationale]', with: 'Some rationale'
+		it 'can be created from new form page' #do
+		# 	fill_in 'post[date]', with: Date.today
+		# 	fill_in 'post[rationale]', with: 'Some rationale'
 
-			# page.find('#save', visible: true).click
+		# 	page.find('center').click
 
-			# expect(page).to have_content('Some rationale')
+		# 	puts page.body
+
+		# 	expect(page).to have_content('Some rationale')
 		# end
 
-		it 'will have a user associated with it'
+		it 'will have a cuser associated with it'
 			# fill_in 'post[date]', with: Date.today
 			# fill_in 'post[rationale]', with: 'User Association'
 
