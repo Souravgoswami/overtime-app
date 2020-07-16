@@ -52,25 +52,23 @@ describe 'navigate' do
 			expect(page.status_code).to eq(200)
 		end
 
-		it 'can be created from new form page' #do
-		# 	fill_in 'post[date]', with: Date.today
-		# 	fill_in 'post[rationale]', with: 'Some rationale'
+		it 'can be created from new form page' do
+			fill_in 'post[date]', with: Date.today
+			fill_in 'post[rationale]', with: 'Some rationale'
 
-		# 	page.find('center').click
+			page.find('#submit', visible: false).click
 
-		# 	puts page.body
+			expect(page).to have_content('Some rationale')
+		end
 
-		# 	expect(page).to have_content('Some rationale')
-		# end
+		it 'will have a cuser associated with it' do
+			fill_in 'post[date]', with: Date.today
+			fill_in 'post[rationale]', with: 'User Association'
 
-		it 'will have a cuser associated with it'
-			# fill_in 'post[date]', with: Date.today
-			# fill_in 'post[rationale]', with: 'User Association'
+			find('#submit', visible: false).click
 
-			# find('#save').click
-
-			# expect(@user.posts.last.rationale).to eq('User Association')
-		# end
+			expect(@user.posts.last.rationale).to eq('User Association')
+		end
 	end
 
 describe 'edit' do
@@ -86,15 +84,15 @@ describe 'edit' do
 		expect(page.status_code).to eq(200)
 	end
 
-	it 'can be edited'
-		# visit edit_post_path(@post1)
+	it 'can be edited' do
+		visit edit_post_path(@post1)
 
-		# fill_in 'post[date]', with: Date.today
-		# fill_in 'post[rationale]', with: 'Edited content'
+		fill_in 'post[date]', with: Date.today
+		fill_in 'post[rationale]', with: 'Edited content'
 
-		# find('#save').click
+		find('#submit', visible: false).click
 
-		# expect(page).to have_content('Edited content')
-	# end
+		expect(page).to have_content('Edited content')
+	end
 end
 end
