@@ -14,4 +14,12 @@ FactoryBot.define do
 		first_name { 'John' }
 		last_name { 'Rock' }
 	end
+
+	factory :non_authorized_user, class: 'User' do
+		email { 'non_authorized@test.com' }
+		password { 'asdfasdf' }
+		password_confirmation { 'asdfasdf' }
+		first_name { 'Non' }
+		last_name { 'Authorized' }
+	end
 end

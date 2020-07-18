@@ -71,28 +71,40 @@ describe 'navigate' do
 		end
 	end
 
-describe 'edit' do
-	before do
-		login_as(@user, scope: :user)
-		@post1 = FactoryBot.create(:post1)
-		@post2 = FactoryBot.create(:post2)
+	describe 'edit' do
+		before do
+			login_as(@user, scope: :user)
+			@post1 = FactoryBot.create(:post1)
+			@post2 = FactoryBot.create(:post2)
+		end
+
+		it 'can be reached by clicking edit on index page' do
+			visit posts_url
+			click_link "edit_#{@post1.id}"
+			expect(page.status_code).to eq(200)
+		end
+
+		it 'can be edited' do
+			visit edit_post_path(@post1)
+
+			fill_in 'post[date]', with: Date.today
+			fill_in 'post[rationale]', with: 'Edited content'
+
+			find('#submit', visible: false).click
+
+			expect(page).to have_content('Edited content')
+		end
+
+		it 'cannot be edited by a non-authorized user' do
+			post = FactoryBot.create(:post1)
+			logout(:user)
+
+			non_authorized_user = FactoryBot.create(:non_authorized_user)
+			login_as(non_authorized_user, scope: :user)
+
+			visit edit_post_path(post)
+
+			expect(current_path).to eq(root_path)
+		end
 	end
-
-	it 'can be reached by clicking edit on index page' do
-		visit posts_url
-		click_link "edit_#{@post1.id}"
-		expect(page.status_code).to eq(200)
-	end
-
-	it 'can be edited' do
-		visit edit_post_path(@post1)
-
-		fill_in 'post[date]', with: Date.today
-		fill_in 'post[rationale]', with: 'Edited content'
-
-		find('#submit', visible: false).click
-
-		expect(page).to have_content('Edited content')
-	end
-end
 end

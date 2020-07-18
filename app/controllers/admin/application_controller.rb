@@ -14,15 +14,16 @@ module Admin
 
 		def authenticate_admin
 			unless Admin.admin_types.include?(current_user.try(:type))
-				flash[:alert] = 'Permission denied'
+				flash[:alert] = "Bloop! That's an invalid page!"
 				redirect_to root_path
 			end
 		end
 
 		# Override this value to specify the number of elements to display at a time
 		# on index pages. Defaults to 20.
-		# def records_per_page
-		#   params[:per_page] || 20
-		# end
+
+		def records_per_page
+		  params[:per_page] || 20
+		end
 	end
 end
