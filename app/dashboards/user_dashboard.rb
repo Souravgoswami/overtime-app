@@ -39,10 +39,6 @@ class UserDashboard < Administrate::BaseDashboard
 		posts
 		id
 		email
-		encrypted_password
-		reset_password_token
-		reset_password_sent_at
-		remember_created_at
 		first_name
 		last_name
 		type
@@ -54,15 +50,11 @@ class UserDashboard < Administrate::BaseDashboard
 	# an array of attributes that will be displayed
 	# on the model's form (`new` and `edit`) pages.
 	FORM_ATTRIBUTES = %i[
-	posts
-	email
-	encrypted_password
-	reset_password_token
-	reset_password_sent_at
-	remember_created_at
-	first_name
-	last_name
-	type
+		posts
+		email
+		first_name
+		last_name
+		type
 	].freeze
 
 	# COLLECTION_FILTERS
