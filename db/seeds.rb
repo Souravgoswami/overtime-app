@@ -1,4 +1,4 @@
-N = 150
+N = 10
 
 AdminUser.create!(
 		email: "a@a.a",

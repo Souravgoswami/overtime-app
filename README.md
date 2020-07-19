@@ -18,5 +18,4 @@ AdminUser -> STI
 + Custom CSS (Sass)
 
 ## Refractor TODOS:
-- Refractor user association integration test in post_spec
 - Refractor posts/_form for admin user with status
