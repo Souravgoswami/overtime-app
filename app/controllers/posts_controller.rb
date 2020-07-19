@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
+
 	def index
-		@posts = Post.all
+		@posts = current_user.posts.page(params[:page]).per(params[:items] || 30)
+
 		@table_class = %w(primary success warning danger info)
 			.each { |x| x.prepend('bg-') }
 	end

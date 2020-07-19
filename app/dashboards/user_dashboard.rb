@@ -10,7 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
 	ATTRIBUTE_TYPES = {
 		posts: Field::HasMany,
 		id: Field::Number.with_options(searchable: false),
-		email: Field::String,
+		email: Field::String.with_options(searchable: true),
 		encrypted_password: Field::String.with_options(searchable: false),
 		reset_password_token: Field::String.with_options(searchable: false),
 		reset_password_sent_at: Field::DateTime.with_options(searchable: false),

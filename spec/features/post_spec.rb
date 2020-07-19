@@ -23,6 +23,18 @@ describe 'navigate' do
 			visit posts_path
 			expect(page).to have_content(/ratinoale|content/)
 		end
+
+		it 'has a scope so that only post creators can see their posts' do
+			post1 = FactoryBot.create(:post1)
+			post2 = FactoryBot.create(:post1)
+
+			other_user = User.create(email: 'other@user.mail', password: 'asdfasdf', first_name: 'Non', last_name: 'Authorized')
+			other_post = Post.create(date: Date.today, rationale: "This post shouldn't be seen", user: other_user)
+
+			visit posts_path
+			expect(page).to_not have_content("This post shouldn't be seen")
+
+		end
 	end
 
 	describe 'new' do

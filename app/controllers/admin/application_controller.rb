@@ -23,7 +23,7 @@ module Admin
 		# on index pages. Defaults to 20.
 
 		def records_per_page
-		  params[:per_page] || 20
+			params[:per_page] || 20
 		end
 	end
 end

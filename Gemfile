@@ -39,3 +39,5 @@ gem "administrate", "~> 0.14.0"
 gem "bourbon", "~> 7.0"
 
 gem "pundit", "~> 2.1"
+
+gem "kaminari", "~> 1.2"
