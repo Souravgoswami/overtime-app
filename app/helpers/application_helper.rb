@@ -9,6 +9,6 @@ module ApplicationHelper
 	end
 
 	def notify(msg, btn_msg = 'Ok')
-		javascript_tag %Q[notify("#{msg}", "#{btn_msg}" )]
+		javascript_tag %Q[notify("#{msg}", "#{btn_msg}")]
 	end
 end
