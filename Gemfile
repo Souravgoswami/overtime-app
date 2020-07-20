@@ -41,3 +41,5 @@ gem "bourbon", "~> 7.0"
 gem "pundit", "~> 2.1"
 
 gem "kaminari", "~> 1.2"
+
+gem "twilio-ruby", "~> 5.39"
