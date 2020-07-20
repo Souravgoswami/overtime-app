@@ -6,6 +6,7 @@
 			<tr>
 				<th><center>Actions</center></th>
 				<th><center>#</center></th>
+				<th><center>Overtime Requested</center></th>
 				<th><center>Status</center></th>
 				<th><center>Date</center></th>
 				<th><center>Rationale</center></th>
@@ -28,7 +29,8 @@
 					</td>
 
 					<td><%= x.id %></td>
-					<td><%= status_label(x.status) %></td>
+					<td><%= x.overtime_request.round(1) %></td>
+					<td><center><%= status_label(x.status) %></center></td>
 					<td><%= x.date %></td>
 					<td><%= x.rationale.then { |x| x.length > 50 ? x[0..50] + '...' : x } %></td>
 				</tr>

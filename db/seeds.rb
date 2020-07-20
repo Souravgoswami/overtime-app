@@ -17,7 +17,8 @@ N.times do |n|
 		Post.create!(
 			date: Date.today,
 			rationale: "#{nx}",
-			user_id: user.id
+			user_id: user.id,
+			overtime_request: rand(0.5..3.0).round(1)
 		)
 	end
 
