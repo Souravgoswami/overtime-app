@@ -98,3 +98,33 @@ body, html {
 		@include setbg(#ff7b00, #ff7a00, #ff0000) ;
 	}
 }
+
+.table {
+	transition: all 0.125s ease-out ;
+}
+
+th {
+	transition: all 0.125s ease-out ;
+	cursor: pointer ;
+
+	&:hover {
+		color: #fff ;
+		background-color: #55f ;
+	}
+}
+
+tr {
+	&:hover {
+		background-color: #eee !important ;
+	}
+}
+
+.table-row {
+	cursor: pointer ;
+	transition: all 0.125s ease-out ;
+
+	&:hover {
+		background-color: #ddd ;
+
+	}
+}
