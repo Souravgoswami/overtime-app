@@ -1,9 +1,11 @@
 # Overtime App
 Key requirement: company needs documentation that salaried employees did not get overtime each week.
 
-Post -> date:date rationale:text
-User -> Devise
-AdminUser -> STI
+# Models
+- Post -> date:date rationale:text
+- User -> Devise
+- AdminUser -> STI
+- Auditing
 
 ## Features
 - Approval Workflow
@@ -16,6 +18,7 @@ AdminUser -> STI
 ## UI
 + Bootstrap formatting
 + Custom CSS (Sass)
++ Icons from a custom code to generate css based on svg in a dir
 
 ## Refractor TODOS:
 - Refractor posts/_form for admin user with status
