@@ -1,5 +1,5 @@
 class PostPolicy < ApplicationPolicy
 	def update?
-		record.user_id == user.id || admin_types.include?(user.try(:type))
+		admin_types.include?(user.type) | (record.user_id.eql?(user.id) & !record.approved?)
 	end
 end

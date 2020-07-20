@@ -11,4 +11,15 @@ module ApplicationHelper
 	def notify(msg, btn_msg = 'Ok')
 		javascript_tag %Q[notify("#{msg}", "#{btn_msg}")]
 	end
+
+	def status_label(s)
+		badge = case s.downcase
+			when 'submitted' then 'primary'
+			when 'approved' then 'success'
+			when 'rejected' then 'danger'
+			else 'warning'
+		end
+
+		content_tag(:span, s, class: "badge badge-#{badge}")
+	end
 end

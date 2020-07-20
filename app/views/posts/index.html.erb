@@ -4,9 +4,9 @@
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
-				<th><center>Admin Action</center></th>
+				<th><center>Actions</center></th>
 				<th><center>#</center></th>
-				<th><center>User</center></th>
+				<th><center>Status</center></th>
 				<th><center>Date</center></th>
 				<th><center>Rationale</center></th>
 			</tr>
@@ -14,7 +14,7 @@
 
 		<tbody>
 			<% @posts.each_with_index do |x, i| %>
-				<tr class=<%= @table_class.rotate![0] if i.even? %>>
+				<tr>
 					<td>
 						<%= link_to 'Edit', edit_post_path(x), id: "edit_#{x.id}" %> |
 						<%= link_to 'Delete',
@@ -23,8 +23,9 @@
 							data: { confirm: "Are you sure deleting item #{x.id}?"}
 						%>
 					</td>
+
 					<td><%= x.id %></td>
-					<td><%= x.user.full_name %></td>
+					<td><%= status_label(x.status) %></td>
 					<td><%= x.date %></td>
 					<td><%= x.rationale.then { |x| x.length > 50 ? x[0..50] + '...' : x } %></td>
 				</tr>

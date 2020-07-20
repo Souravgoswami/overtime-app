@@ -50,7 +50,7 @@ describe 'navigate' do
 
 	describe 'delete' do
 		it 'can be deleted' do
-			# post = FactoryBot.create(:post1)
+			post = FactoryBot.create(:post1)
 
 			visit posts_path
 			click_link("deletePostFromIndex_#{post.id}")
