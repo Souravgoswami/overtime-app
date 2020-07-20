@@ -1,0 +1,24 @@
+$icons: ('edit', 'trashcan', 'write') ;
+$sizes: 16px, 48px ;
+
+@mixin background($name, $size) {
+	display: block ;
+	transition: all 0.125s ease ;
+
+	&::before {
+		content: '' ;
+		padding-right: $size ;
+		background: transparent url($name) center center no-repeat ;
+		background-size: $size ;
+		margin-right: 4px ;
+		transition: all 0.125s ease ;
+	}
+}
+
+@each $size in $sizes {
+	.glyphicon#{$size} {
+		@each $icon in $icons {
+			&.glyphicon-#{$icon} { @include background($icon, $size) }
+		}
+	}
+}

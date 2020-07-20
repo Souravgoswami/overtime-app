@@ -14,27 +14,7 @@
 		</thead>
 
 		<tbody>
-			<% @posts.each_with_index do |x, i| %>
-				<tr class="table">
-					<td class="table-row">
-						<% if policy(x).update? %>
-							<%= link_to 'Edit', edit_post_path(x), id: "edit_#{x.id}" %> |
-						<% end %>
-
-						<%= link_to 'Delete',
-							post_path(x), method: :delete,
-							id: "deletePostFromIndex_#{x.id}",
-							data: { confirm: "Are you sure deleting item #{x.id}?"}
-						%>
-					</td>
-
-					<td class="table-row"><%= x.id %></td>
-					<td class="table-row"><%= x.overtime_request.round(1) %></td>
-					<td class="table-row"><center><%= status_label(x.status) %></center></td>
-					<td class="table-row"><%= x.date %></td>
-					<td class="table-row"><%= x.rationale.then { |x| x.length > 50 ? x[0..50] + '...' : x } %></td>
-				</tr>
-			<% end %>
+			<%= render partial: 'post', collection: @posts, as: :x %>
 		</tbody>
 	</table>
 
