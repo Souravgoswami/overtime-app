@@ -29,7 +29,6 @@ group :development do
 	gem 'rspec-rails'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'irb'
 gem 'rdoc'
 
@@ -43,3 +42,5 @@ gem "pundit", "~> 2.1"
 gem "kaminari", "~> 1.2"
 
 gem "twilio-ruby", "~> 5.39"
+
+gem "dotenv-rails", "~> 2.7"
