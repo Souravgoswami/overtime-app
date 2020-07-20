@@ -13,11 +13,13 @@ N.times do |n|
 		first_name: n.to_s, last_name: n.to_s
 	)
 
-	Post.create!(
-		date: Date.today,
-		rationale: "#{n}",
-		user_id: user.id
-	)
+	10.times do |nx|
+		Post.create!(
+			date: Date.today,
+			rationale: "#{nx}",
+			user_id: user.id
+		)
+	end
 
 	print "\e[2K#{n} / #{N}\r"
 end

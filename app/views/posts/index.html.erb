@@ -16,7 +16,10 @@
 			<% @posts.each_with_index do |x, i| %>
 				<tr>
 					<td>
-						<%= link_to 'Edit', edit_post_path(x), id: "edit_#{x.id}" %> |
+						<% if policy(x).update? %>
+							<%= link_to 'Edit', edit_post_path(x), id: "edit_#{x.id}" %> |
+						<% end %>
+
 						<%= link_to 'Delete',
 							post_path(x), method: :delete,
 							id: "deletePostFromIndex_#{x.id}",
