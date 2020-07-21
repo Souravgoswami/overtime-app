@@ -33,7 +33,7 @@ module Overtime
     config.generators.system_tests = nil
 
     config.time_zone = 'Kolkata'
-    config.assets.enabled = true
+    # config.assets.enabled = true
     config.assets.paths << Rails.root.join('app', 'assets', 'glyphicons')
     config.autoload_paths << Rails.root.join('lib')
   end

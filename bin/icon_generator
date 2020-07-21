@@ -27,7 +27,7 @@ css = "/*\n\tIncluded files:\n\t#{files.join(' ')}\n\n\tAvailable sizes:\n\t#{SI
 				}
 			EOF
 		end
-	end.join + "\n\nGo to the top of the file for usage guide...\n"
+	end.join + "\n\n/*\n\tGo to the top of the file for usage guide...\n*/"
 
 Dir.mkdir(GLYPHICON_DIR) unless Dir.exist?(GLYPHICON_DIR)
 
