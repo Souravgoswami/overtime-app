@@ -1,5 +1,5 @@
 require 'etc'
-N = 250
+N = 200
 
 class ForkProcess
 	@@processes = []
@@ -20,7 +20,8 @@ end
 AdminUser.create!(
 		email: "a@a.a",
 		password: "aaaaaa",
-		first_name: 'aaaaaa', last_name: 'aaaaaa'
+		first_name: 'aaaaaa', last_name: 'aaaaaa',
+		phone: rand(10 ** 9..10 ** 10 - 1).to_s
 )
 
 N.times do |n|
@@ -28,7 +29,8 @@ N.times do |n|
 		user = User.create!(
 			email: "#{n}@x.org",
 			password: "#{n.to_s.*(6)[0..5]}",
-			first_name: n.to_s, last_name: n.to_s
+			first_name: n.to_s, last_name: n.to_s,
+			phone: rand(10 ** 9..10 ** 10 - 1).to_s
 		)
 
 		10.times do |nx|

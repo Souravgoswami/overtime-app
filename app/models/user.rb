@@ -5,6 +5,7 @@ class User < ApplicationRecord
 				 :recoverable, :rememberable, :validatable
 
 	validates_presence_of :first_name, :last_name
+	validates :phone, presence: true, length: { minimum: 10, maximum: 10 }, allow_blank: false
 	has_many :posts
 
 	def full_name

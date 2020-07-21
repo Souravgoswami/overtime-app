@@ -12,6 +12,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
 		id: Field::Number.with_options(searchable: false),
 		email: Field::String.with_options(searchable: true),
 		password: Field::String.with_options(searchable: false),
+		password_confirmation: Field::String.with_options(searchable: false),
 		encrypted_password: Field::String.with_options(searchable: false),
 		reset_password_token: Field::String.with_options(searchable: false),
 		reset_password_sent_at: Field::DateTime.with_options(searchable: false),
@@ -21,6 +22,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
 		type: Field::String.with_options(searchable: false),
 		created_at: Field::DateTime.with_options(searchable: false),
 		updated_at: Field::DateTime.with_options(searchable: false),
+		phone: Field::String.with_options(searchable: false),
 	}.freeze
 
 	# COLLECTION_ATTRIBUTES
@@ -56,10 +58,14 @@ class AdminUserDashboard < Administrate::BaseDashboard
 	# an array of attributes that will be displayed
 	# on the model's form (`new` and `edit`) pages.
 	FORM_ATTRIBUTES = %i[
+		posts
 		email
-		password
+		phone
 		first_name
 		last_name
+		password
+		password_confirmation
+		type
 	].freeze
 
 	# COLLECTION_FILTERS

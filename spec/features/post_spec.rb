@@ -32,7 +32,7 @@ describe 'navigate' do
 			post1 = FactoryBot.create(:post1)
 			post2 = FactoryBot.create(:post2)
 
-			other_user = User.create(email: 'other@user.mail', password: 'asdfasdf', first_name: 'Non', last_name: 'Authorized')
+			other_user = User.create(email: 'other@user.mail', password: 'asdfasdf', first_name: 'Non', last_name: 'Authorized', phone: rand(10 ** 9..10 ** 10 - 1))
 			other_post = Post.create(date: Date.today, rationale: "This post shouldn't be seen", user: other_user, overtime_request: 3.5)
 
 			visit posts_path
