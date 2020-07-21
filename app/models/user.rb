@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
 	validates_presence_of :first_name, :last_name
 	validates :phone, presence: true, length: { minimum: 10, maximum: 10 }, allow_blank: false
+	validates_format_of :phone, with: /\b\d{10}\b/, multiline: false
+
 	has_many :posts
 
 	def full_name
