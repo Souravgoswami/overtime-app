@@ -14,8 +14,8 @@ module ApplicationHelper
 
 	def status_label(s)
 		badge = case s.downcase
-			when 'submitted' then 'primary'
-			when 'approved' then 'success'
+			when 'submitted', 'pending' then 'primary'
+			when 'approved', 'confirmed' then 'success'
 			when 'rejected' then 'danger'
 			else 'warning'
 		end

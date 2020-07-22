@@ -22,5 +22,5 @@
 	<td class="table-row"><%= audit_log.user.full_name %></td>
 	<td class="table-row"><%= audit_log.start_date %></td>
 	<td class="table-row"><%= audit_log.end_date %></td>
-	<td class="table-row"><center><%= audit_log.status %></center></td>
+	<td class="table-row"><center><%= status_label(audit_log.status) %></center></td>
 </tr>
