@@ -1,1 +1,26 @@
-<%= audit_log.user.full_name %>
+<tr class="table">
+
+<%
+=begin %>
+	<td class="table-row">
+		<% if policy(audit_log).update? %>
+			<%= link_to edit_post_path(audit_log),  id: "edit_#{audit_log.id}" do %>
+				<span class="glyphicon20 glyphicon-edit icon-hover"></span>
+			<% end %>
+		<% end %>
+
+		<% if policy(audit_log).delete? %>
+			<%= link_to post_path(audit_log), method: :delete, id: "deletePostFromIndeaudit_log_#{audit_log.id}", data: { confirm: "Are you sure deleting item #{audit_log.id}?"} do %>
+				<span class="glyphicon20 glyphicon-trashcan icon-hover"></span>
+			<% end %>
+		<% end %>
+	</td>
+<%
+=end %>
+
+	<td class="table-row"><%= audit_log.id %></td>
+	<td class="table-row"><%= audit_log.user.full_name %></td>
+	<td class="table-row"><%= audit_log.start_date %></td>
+	<td class="table-row"><%= audit_log.end_date %></td>
+	<td class="table-row"><center><%= audit_log.status %></center></td>
+</tr>

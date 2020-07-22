@@ -1,1 +1,21 @@
-<%= render @audit_logs %>
+<div class="container-fluid">
+	<h1 class="flex-center">Posts</h1>
+
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th><center>#</center></th>
+				<th><center>Employee</center></th>
+				<th><center>Starting Week</center></th>
+				<th><center>Confirmed At</center></th>
+				<th><center>Status</center></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<%= render partial: 'audit_log', collection: @audit_logs %>
+		</tbody>
+	</table>
+
+	<div class="centrify"><%= paginate @audit_logs, class: 'pagination' %></div>
+</div>
