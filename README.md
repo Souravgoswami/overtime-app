@@ -21,7 +21,3 @@ Key requirement: company needs documentation that salaried employees did not get
 + Icons from a custom code to generate css based on svg in a dir
 
 ## TODOS:
-- Integrate validation for phone attribute for user:
-  + No spaces or dashes
-  + Exactly 10 characters
-  + All characters have to be a number
