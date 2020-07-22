@@ -1,6 +1,6 @@
 describe 'AuditLog Feature' do
 	before do
-		@admin_user = FactoryBot.create(:user)
+		@admin_user = FactoryBot.create(:admin_user)
 		login_as(@admin_user, scope: :user)
 		@audit_log = FactoryBot.create(:audit_log)
 	end
@@ -15,10 +15,16 @@ describe 'AuditLog Feature' do
 
 		it 'renders audit log content' do
 			visit audit_logs_path
-			expect(page.has_content?(/SNOW, JOHN/)).to be(true)
+			expect(page.has_content?(/ROCK, JOHN/)).to be(true)
 		end
 
-		xit 'cannot be accessed by non-admin users' do
+		it 'cannot be accessed by non-admin users' do
+			logout(:user)
+			user = FactoryBot.create(:user)
+			login_as(user, scope: :user)
+
+			visit audit_logs_path
+			expect(current_path).to eq(root_path)
 		end
 	end
 end
