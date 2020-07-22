@@ -9,6 +9,7 @@ class User < ApplicationRecord
 	validates_format_of :phone, with: /\b\d{10}\b/, multiline: false
 
 	has_many :posts
+	has_many :audit_logs
 
 	def full_name
 		"#{last_name.upcase}, #{first_name.upcase}"
