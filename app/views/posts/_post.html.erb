@@ -17,5 +17,5 @@
 	<td class="table-row"><%= x.overtime_request.round(1) %></td>
 	<td class="table-row"><center><%= status_label(x.status) %></center></td>
 	<td class="table-row"><%= x.date %></td>
-	<td class="table-row"><%= x.rationale.then { |x| x.length > 50 ? x[0..50] + '...' : x } %></td>
+	<td class="table-row"><%= x.rationale.then { |y| y.length > 50 ? y[0..50] + '...' : y } %></td>
 </tr>
