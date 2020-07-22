@@ -45,6 +45,15 @@
 				<% end %>
 			</li>
 
+			<% if current_user.try(:type) == 'AdminUser' %>
+				<li class="nav-item <%= active?(audit_logs_path) %>">
+					<%= link_to audit_logs_path, class: 'nav-link' do %>
+						Audit Log
+						<span class="sr-only">(posts)</span>
+					<% end %>
+				</li>
+			<% end %>
+
 			<li class="nav-item dropdown mr-sm-2">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Account

@@ -35,7 +35,7 @@ class ApplicationPolicy
 	end
 
 	def admin_types
-		%w(AdminUser SuperAdmin)
+		%w(AdminUser SuperAdmin).tap(&:compact!)
 	end
 
 	class Scope
