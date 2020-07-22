@@ -1,5 +1,5 @@
 require 'etc'
-N = 200
+N = 100
 
 class ForkProcess
 	@@processes = []
@@ -39,6 +39,13 @@ N.times do |n|
 				rationale: "User #{user.id}'s post: #{nx}",
 				user_id: user.id,
 				overtime_request: rand(0.5..3.0).round(1)
+			)
+
+			AuditLog.create!(
+				user: user,
+				status: 0,
+				start_date: Date.today - 6.days,
+				status: 0
 			)
 		end
 	end
