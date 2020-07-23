@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-SIZES = 8.step(128, 4).to_a
+SIZES = 8.step(64, 4).to_a
 MARGIN = 4
 
 abort("You need to be at the project's / directory before running #{Process.argv0}") unless Dir.exist?('app')
