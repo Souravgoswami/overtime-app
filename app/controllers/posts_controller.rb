@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@posts = Post.posts_by(current_user).page(params[:page]).per(params[:items] || 30)
+		@posts = Post.posts_by(current_user).page(params[:page]).per(params[:items] || 20).order('id ASC')
 
 		@table_class = %w(primary success warning danger info)
 			.each { |x| x.prepend('bg-') }

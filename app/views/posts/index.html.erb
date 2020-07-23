@@ -13,10 +13,10 @@
 			</tr>
 		</thead>
 
-		<tbody>
+		<tbody id="posts">
 			<%= render partial: 'post', collection: @posts, as: :x %>
 		</tbody>
 	</table>
 
-	<div class="centrify"><%= paginate @posts, class: 'pagination' %></div>
+	<div class="centrify" id="paginator"><%= paginate @posts, class: 'pagination', remote: true %></div>
 </div>

@@ -18,10 +18,12 @@ require("channels")
 
 import 'jquery'
 import 'bootstrap'
+import '../stylesheets/application.scss'
 
 document.addEventListener('turbolinks:load', () => {
 	$('[data-toggle="tooltip"]').tooltip()
 	$('[data-toggle="popover"]').popover()
 })
 
-import '../stylesheets/application.scss'
+window.JQuery = $
+window.$ = $

@@ -12,10 +12,16 @@
 			</tr>
 		</thead>
 
-		<tbody>
+		<tbody id="auditLogs">
 			<%= render partial: 'audit_log', collection: @audit_logs %>
 		</tbody>
 	</table>
 
-	<div class="centrify"><%= paginate @audit_logs, class: 'pagination' %></div>
+		<div class="centrify">
+		</div>
+
+	<%= params[:page] %>
+	<div id="paginator">
+		<%= paginate @audit_logs, class: 'pagination', remote: true %>
+	</div>
 </div>

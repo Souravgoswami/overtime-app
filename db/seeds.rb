@@ -44,7 +44,7 @@ a_z.each do |x|
 				phone: rand(10 ** 9..10 ** 10 - 1).to_s
 		)
 
-		10.times { |i| user_has_many_item_creation(user, i) }
+		50.times { |i| user_has_many_item_creation(user, i) }
 	end
 
 	print "\e[2K#{a_z.index(x)} / #{a_z.count}\r"
@@ -61,7 +61,7 @@ N.times do |n|
 			phone: rand(10 ** 9..10 ** 10 - 1).to_s
 		)
 
-		10.times { |i| user_has_many_item_creation(user, i) }
+		50.times { |i| user_has_many_item_creation(user, i) }
 	end
 
 	print "\e[2K#{n} / #{N}\r"
