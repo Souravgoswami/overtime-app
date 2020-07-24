@@ -13,10 +13,9 @@ class StaticController < ApplicationController
 			'id ASC'
 		end
 
-		@pending_approvals = Post.where(status: 0)
-			.page(params[:page]).per(
-				params[:items].then { |x| x ? x.to_i.clamp(1, 1000) : 20 }
-			).order(o)
+		@pending_approvals = Post.submitted.page(params[:page]).per(
+			params[:items].then { |x| x ? x.to_i.clamp(1, 1000) : 20 }
+		).order(o)
 
 		@recent_audit_items = AuditLog.last(10)
 	end

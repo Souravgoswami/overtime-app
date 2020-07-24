@@ -12,6 +12,6 @@ class User < ApplicationRecord
 	has_many :audit_logs
 
 	def full_name
-		"#{last_name.upcase}, #{first_name.upcase}"
+		"#{first_name.capitalize} #{last_name.capitalize}"
 	end
 end

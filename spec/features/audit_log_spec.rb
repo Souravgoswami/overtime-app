@@ -15,7 +15,7 @@ describe 'AuditLog Feature' do
 
 		it 'renders audit log content' do
 			visit audit_logs_path
-			expect(page.has_content?(/ROCK, JOHN/)).to be(true)
+			expect(page.has_content?('John Rock')).to be(true)
 		end
 
 		it 'cannot be accessed by non-admin users' do

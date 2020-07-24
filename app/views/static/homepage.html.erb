@@ -1,6 +1,6 @@
 <% if admin_types.include?(current_user.try(:type)) %>
 	<%= render 'admin' %>
-<% elsif current_user.try(:type) == 'User' %>
+<% elsif current_user.is_a?(User) %>
 	<%= render 'employee' %>
 <% else %>
 	<%= render 'guest' %>

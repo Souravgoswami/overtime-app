@@ -6,7 +6,7 @@
 			<% end %>
 		<% end %>
 
-		<% if policy(x).delete? %>
+		<% if policy(x).destroy? %>
 			<%= link_to post_path(x), method: :delete, id: "deletePostFromIndex_#{x.id}", data: { confirm: "Are you sure deleting item #{x.id}?"} do %>
 				<span class="glyphicon20 glyphicon-trashcan icon-hover"></span>
 			<% end %>

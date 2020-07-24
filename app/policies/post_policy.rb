@@ -7,7 +7,7 @@ class PostPolicy < ApplicationPolicy
 		admin_types.include?(user.type) | (record.user_id.eql?(user.id))
 	end
 
-	def delete?
+	def destroy?
 		admin_types.include?(user.type) | (record.user_id.eql?(user.id) & !record.approved?)
 	end
 
