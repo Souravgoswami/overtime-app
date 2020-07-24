@@ -1,17 +1,7 @@
-<div class="jumbotron">
-	<h1 class="display-4">Hello, world!</h1>
-	<% if admin_types.include?(current_user.try(:type)) %>
-		<%= render 'admin' %>
-	<% elsif current_user.try(:type) == 'User' %>
-		<%= render 'employee' %>
-	<% else %>
-		<%= render 'guest' %>
-	<% end %>
-
-	<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-	<hr class="my-4">
-
-	<p class="lead">
-		<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-	</p>
-</div>
+<% if admin_types.include?(current_user.try(:type)) %>
+	<%= render 'admin' %>
+<% elsif current_user.try(:type) == 'User' %>
+	<%= render 'employee' %>
+<% else %>
+	<%= render 'guest' %>
+<% end %>

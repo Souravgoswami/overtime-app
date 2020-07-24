@@ -1,0 +1,18 @@
+.wrapper {
+	display: flex ;
+	align-items: center ;
+	flex-direction: column ;
+	margin: 2% ;
+}
+
+.link {
+	color: #55f ;
+	transition: all 0.125s ease ;
+	text-decoration: none ;
+
+	&:hover {
+		color: #fff ;
+		opacity: 0.5 ;
+		text-decoration: none ;
+	}
+}

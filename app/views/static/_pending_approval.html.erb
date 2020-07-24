@@ -1,0 +1,53 @@
+<tr class="table" id="table-<%= x.id %>">
+	<td class="table-row">
+		<%= link_to edit_post_path(x) do %>
+			<%= x.id %>
+		<% end %>
+	</td>
+
+	<td class="table-row"><%= x.date %></td>
+	<td class="table-row">
+		<%= link_to admin_user_path(x.user) do %>
+			<%= x.user.id %>
+		<% end %>
+	</td>
+
+	<td class="table-row">
+		<%= link_to admin_user_path(x.user) do %>
+			<%= x.user.full_name %>
+		<% end %>
+	</td>
+
+	<td class="table-row"><%= x.rationale.then { |x| x.length > 100 ? x[0..99] + '...' : x } %></td>
+
+	<td class="table-row centrify">
+		<%= form_for x, url: update_with_ajax_post_path(x), method: :put, remote: true, html: { autocomplete: 'off' } do |f|%>
+			<div class="form-group">
+				<%= f.radio_button :status, 'submitted' %>
+				<%= f.label :status, 'Submitted' %>
+
+				<%= f.radio_button :status, 'approved' %>
+				<%= f.label :status, 'Approved' %>
+
+				<%= f.radio_button :status, 'rejected' %>
+				<%= f.label :status, 'Rejected' %>
+
+				<div class="centrify">
+					<label class="btn-outline-pink-animated" data-content="Ok">
+						<%= f.submit '', style: 'display: none', id: "submit" %>
+					</label>
+				</div>
+			</div>
+		<% end %>
+	</td>
+
+	<td>
+		<%= link_to edit_post_path(x) do %>
+			<span class="glyphicon20 glyphicon-edit icon-hover"></span>
+		<% end %>
+
+		<%= link_to post_path(x), method: :delete, data: { confirm: 'Are you sure to delete the post?' } do %>
+			<span class="glyphicon20 glyphicon-trashcan icon-hover"></span>
+		<% end %>
+	</td>
+</tr>

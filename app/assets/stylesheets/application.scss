@@ -108,8 +108,10 @@ th {
 	cursor: pointer ;
 
 	&:hover {
-		color: #fff ;
-		background-color: #55f ;
+		&, & a {
+			color: #fff ;
+			background-color: #55f ;
+		}
 	}
 }
 
@@ -125,7 +127,6 @@ tr {
 
 	&:hover {
 		background-color: #ddd ;
-
 	}
 }
 

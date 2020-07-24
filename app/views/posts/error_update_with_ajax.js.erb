@@ -1,0 +1,6 @@
+notify('Error! Cannot update post. Please check that all detils are filled up and they are valid', 'Refresh', "#")
+<% if @post.errors.any? %>
+	<% @post.errors.full_messages.each do |x| %>
+		notify("<%= x %>")
+	<% end %>
+<% end %>

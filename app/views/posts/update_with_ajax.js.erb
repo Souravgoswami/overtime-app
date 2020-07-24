@@ -1,0 +1,2 @@
+notify('Successfully updated post', 'View Post <%= @post.id %>', "<%= post_path(@post) %>")
+$("#table-<%= @post.id %>").fadeOut(500)

@@ -76,7 +76,7 @@ describe 'navigate' do
 			expect { page.find('#submit', visible: false).click }.to change(Post, :count).by(1)
 		end
 
-		it 'will have a cuser associated with it' do
+		it 'will have a user associated with it' do
 			fill_in 'post[date]', with: Date.today
 			fill_in 'post[rationale]', with: 'User Association'
 			fill_in 'post[overtime_request]', with: 4.5
@@ -104,11 +104,11 @@ describe 'navigate' do
 			visit edit_post_path(@post1)
 
 			fill_in 'post[date]', with: Date.today
-			fill_in 'post[rationale]', with: 'Edited content'
+			fill_in 'post[rationale]', with: 'Some edited content'
 
 			find('#submit', visible: false).click
 
-			expect(page).to have_content('Edited content')
+			expect(page).to have_content('Some edited content')
 		end
 
 		it 'cannot be edited by a non-authorized user' do

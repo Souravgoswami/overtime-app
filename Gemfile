@@ -44,3 +44,5 @@ gem "kaminari", "~> 1.2"
 gem "twilio-ruby", "~> 5.39"
 
 gem "dotenv-rails", "~> 2.7"
+
+gem "selenium-webdriver", "~> 3.142"
