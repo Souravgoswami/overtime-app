@@ -35,6 +35,17 @@ body, html {
 	flex-direction: column ;
 }
 
+.centrify-inline-wrap {
+	position: relative ;
+}
+
+.centrify-inline {
+	position: absolute ;
+	top: 50% ;
+	left: 50% ;
+	transform: translate(-50%, -50%) ;
+}
+
 .w-600 {
 	width: 600px ;
 }
@@ -141,5 +152,35 @@ tr {
 
 	&:active {
 		filter: drop-shadow(6px 6px 2px #0009) ;
+	}
+}
+
+.badge-custom {
+	border-radius: 4px ;
+	color: #fff ;
+	padding: 2px 4px  ;
+	font-size: 12px ;
+	font-weight: bold ;
+}
+
+.badge-custom-success {
+	background-color: #00A32C ;
+}
+
+.badge-custom-danger {
+	background-color: #DC3545 ;
+}
+
+@keyframes slideout {
+	0% {
+		transform: translateX(0) ;
+	}
+
+	75% {
+		transform: translateX(-25%) ;
+	}
+
+	100% {
+		transform: translateX(125%) ;
 	}
 }

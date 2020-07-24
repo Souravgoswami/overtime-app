@@ -1,53 +1,82 @@
+
 <tr class="table" id="table-<%= x.id %>">
-	<td class="table-row">
-		<%= link_to edit_post_path(x) do %>
-			<%= x.id %>
-		<% end %>
+	<td class="table-row centrify-inline-wrap">
+		<div class="centrify-inline">
+			<%= link_to edit_post_path(x) do %>
+				<%= x.id %>
+			<% end %>
+		</div>
 	</td>
 
-	<td class="table-row"><%= x.date %></td>
-	<td class="table-row">
-		<%= link_to admin_user_path(x.user) do %>
-			<%= x.user.id %>
-		<% end %>
+	<td class="table-row centrify-inline-wrap">
+		<div class="centrify-inline">
+			<%= x.date %>
+		</div>
 	</td>
 
-	<td class="table-row">
-		<%= link_to admin_user_path(x.user) do %>
-			<%= x.user.full_name %>
-		<% end %>
+	<td class="table-row centrify-inline-wrap">
+		<div class="centrify-inline">
+			<%= link_to admin_user_path(x.user) do %>
+				<%= x.user.id %>
+			<% end %>
+		</div>
 	</td>
 
-	<td class="table-row"><%= x.rationale.then { |x| x.length > 100 ? x[0..99] + '...' : x } %></td>
+	<td class="table-row centrify-inline-wrap">
+		<div class="centrify-inline">
+			<%= link_to admin_user_path(x.user) do %>
+				<%= x.user.full_name %>
+			<% end %>
+		</div>
+	</td>
+
+	<td class="table-row centrify-inline-wrap">
+		<div class="centrify-inline">
+			<%= x.rationale.then { |x| x.length > 100 ? x[0..99] + '...' : x } %>
+		</div>
+	</td>
 
 	<td class="table-row centrify">
 		<%= form_for x, url: update_with_ajax_post_path(x), method: :put, remote: true, html: { autocomplete: 'off' } do |f|%>
 			<div class="form-group">
-				<%= f.radio_button :status, 'submitted' %>
-				<%= f.label :status, 'Submitted' %>
+				<div style="display: none">
+					<%= f.radio_button :status, 'submitted' %>
+					<%= f.label :status, class: 'badge-custom badge-custom-success' do %>
+						<span class="glyphicon16 glyphicon-like">Approve</span>
+					<% end %>
+				</div>
 
-				<%= f.radio_button :status, 'approved' %>
-				<%= f.label :status, 'Approved' %>
+				<div style="display: inline-block">
+					<%= f.radio_button :status, 'approved', class: 'radio-button-toggler' %>
+					<%= f.label :status, class: 'badge-custom badge-custom-success' do %>
+						<span class="glyphicon16 glyphicon-like">Approve</span>
+					<% end %>
+				</div>
 
-				<%= f.radio_button :status, 'rejected' %>
-				<%= f.label :status, 'Rejected' %>
+				<div style="display: inline-block">
+					<%= f.radio_button :status, 'rejected', class: 'radio-button-toggler' %>
+					<%= f.label :status, 'Rejected', class: 'badge-custom badge-custom-danger' do %>
+						<span class="glyphicon16 glyphicon-dislike">Reject</span>
+					<% end %>
+				</div>
 
-				<div class="centrify">
-					<label class="btn-outline-pink-animated" data-content="Ok">
+				<div style="text-align: center">
+					<label class="btn-outline-blue-animated" style="width: 50% ; " data-content="Ok">
 						<%= f.submit '', style: 'display: none', id: "submit" %>
 					</label>
 				</div>
-			</div>
 		<% end %>
 	</td>
 
-	<td>
-		<%= link_to edit_post_path(x) do %>
-			<span class="glyphicon20 glyphicon-edit icon-hover"></span>
-		<% end %>
+	<td class="centrify-inline-wrap">
+		<div class="centrify-inline">
+			<%= link_to edit_post_path(x), class: 'freeze-link' do %>
+				<span class="glyphicon20 glyphicon-edit icon-hover freeze-icon"></span>
+			<% end %>
 
-		<%= link_to post_path(x), method: :delete, data: { confirm: 'Are you sure to delete the post?' } do %>
-			<span class="glyphicon20 glyphicon-trashcan icon-hover"></span>
-		<% end %>
+			<%= link_to destroy_with_ajax_post_path(x), class: 'freeze-link', method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+				<span class="glyphicon20 glyphicon-trashcan icon-hover freeze-icon"></span>
+			<% end %>
+		</div>
 	</td>
 </tr>

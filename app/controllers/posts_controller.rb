@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
 	before_action :set_post, only: %i[
-		show edit update
+		show edit
+		update
 		update_with_ajax
 		destroy
+		destroy_with_ajax
 	]
 
 	before_action :authenticate_user!
@@ -33,10 +35,28 @@ class PostsController < ApplicationController
 		authorize @post
 
 		respond_to do |f|
-			if @post.update(post_params)
-				f.js
+			pps = post_params rescue nil
+
+			if pps
+				if @post.update(pps)
+					f.js
+				else
+					f.js { render 'error_update_with_ajax' }
+				end
 			else
 				f.js { render 'error_update_with_ajax' }
+			end
+		end
+	end
+
+	def destroy_with_ajax
+		authorize @post
+
+		respond_to do |f|
+			if @post.delete
+				f.js
+			else
+				f.js { render 'error_delete_with_ajax' }
 			end
 		end
 	end
@@ -57,6 +77,8 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
+		authorize @post
+
 		if @post.delete
 			redirect_to request.referrer, notice: 'The post was successfully deleted'
 		else

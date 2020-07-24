@@ -3,7 +3,7 @@ require "administrate/base_dashboard"
 class PostDashboard < Administrate::BaseDashboard
 	ATTRIBUTE_TYPES = {
 		user: Field::BelongsTo.with_options(searchable: false),
-		id: Field::Number.with_options(searchable: false),
+		id: Field::Number.with_options(searchable: true),
 		status: Field::Text.with_options(searchable: false),
 		date: Field::Date.with_options(searchable: true),
 		rationale: Field::Text.with_options(searchable: true),
@@ -13,6 +13,7 @@ class PostDashboard < Administrate::BaseDashboard
 
 	COLLECTION_ATTRIBUTES = %i[
 		user
+		id
 		status
 		date
 		rationale

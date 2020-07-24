@@ -1,2 +1,13 @@
-notify('Successfully updated post', 'View Post <%= @post.id %>', "<%= post_path(@post) %>")
-$("#table-<%= @post.id %>").fadeOut(500)
+<% unless Post.statuses[@post.status].eql?(0) %>
+	notify('Successfully <%= @post.status %> post', 'View Post <%= @post.id %>', "<%= post_path(@post) %>")
+
+	setTimeout(() => {
+		$("#table-<%= @post.id %> :input").prop("disabled", true)
+
+		setTimeout(() => {
+			$("#table-<%= @post.id %>").css('animation', 'slideout 500ms ease forwards').fadeOut(500)
+		}, 500)
+	}, 2000)
+<% else %>
+	notify("Status wasn't updated!", 'Ok')
+<% end %>

@@ -1,0 +1,20 @@
+notify('Successfully deleted post', "Ok")
+
+setTimeout(() => {
+	$("#table-<%= @post.id %> .freeze-link").click(function() {
+		return false
+	})
+	$("#table-<%= @post.id %> :input").prop("disabled", true)
+
+	$("#table-<%= @post.id %> .freeze-icon")
+		.css('filter', 'grayscale(100%)')
+		.css('opacity', '0.5')
+
+	$("#table-<%= @post.id %>").css('filter', 'blur(2px)')
+
+	setTimeout(() => {
+		$("#table-<%= @post.id %>")
+			.css('animation', 'slideout 500ms ease forwards')
+			.fadeOut(500)
+	}, 1000)
+})

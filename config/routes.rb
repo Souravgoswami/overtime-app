@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	resources :posts do
 		member do
 			put :update_with_ajax
+			delete :destroy_with_ajax
 		end
 	end
 

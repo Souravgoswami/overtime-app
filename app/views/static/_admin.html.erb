@@ -2,40 +2,44 @@
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
-				<th>
-					<% if params[:sort] == 'asc' && params[:by] == 'id' %>
-						<%= link_to root_path(sort: 'desc', by: 'id', page: params[:page]), class: 'link' do%>
-							Post Id
-							<span class="glyphicon24 glyphicon-arrow-up"></span>
+				<th class="centrify">
+					<center>
+						<% if params[:sort] == 'asc' && params[:by] == 'id' %>
+							<%= link_to root_path(sort: 'desc', by: 'id', page: params[:page]), class: 'link' do%>
+								Post Id
+								<span class="glyphicon24 glyphicon-arrow-up"></span>
+							<% end %>
+						<% elsif params[:sort] == 'desc' && params[:by] == 'id' %>
+							<%= link_to root_path(sort: 'asc', by: 'id', page: params[:page]), class: 'link' do%>
+								Post Id
+								<span class="glyphicon24 glyphicon-arrow-down"></span>
+							<% end %>
+						<% else %>
+							<%= link_to root_path(sort: 'asc', by: 'id', page: params[:page]), class: 'link' do%>
+								Post Id
+							<% end %>
 						<% end %>
-					<% elsif params[:sort] == 'desc' && params[:by] == 'id' %>
-						<%= link_to root_path(sort: 'asc', by: 'id', page: params[:page]), class: 'link' do%>
-							Post Id
-							<span class="glyphicon24 glyphicon-arrow-down"></span>
-						<% end %>
-					<% else %>
-						<%= link_to root_path(sort: 'asc', by: 'id', page: params[:page]), class: 'link' do%>
-							Post Id
-						<% end %>
-					<% end %>
+					</center>
 				</th>
 
 				<th>
-					<% if params[:sort] == 'asc' && params[:by] == 'date' %>
-						<%= link_to root_path(sort: 'desc', by: 'date', page: params[:page]), class: 'link' do%>
-							Date
-							<span class="glyphicon24 glyphicon-arrow-up"></span>
+					<center>
+						<% if params[:sort] == 'asc' && params[:by] == 'date' %>
+							<%= link_to root_path(sort: 'desc', by: 'date', page: params[:page]), class: 'link' do%>
+								Date
+								<span class="glyphicon24 glyphicon-arrow-up"></span>
+							<% end %>
+						<% elsif params[:sort] == 'desc' && params[:by] == 'date' %>
+							<%= link_to root_path(sort: 'asc', by: 'date', page: params[:page]), class: 'link' do%>
+								Date
+								<span class="glyphicon24 glyphicon-arrow-down"></span>
+							<% end %>
+						<% else %>
+							<%= link_to root_path(sort: 'asc', by: 'date', page: params[:page]), class: 'link' do%>
+								Date
+							<% end %>
 						<% end %>
-					<% elsif params[:sort] == 'desc' && params[:by] == 'date' %>
-						<%= link_to root_path(sort: 'asc', by: 'date', page: params[:page]), class: 'link' do%>
-							Date
-							<span class="glyphicon24 glyphicon-arrow-down"></span>
-						<% end %>
-					<% else %>
-						<%= link_to root_path(sort: 'asc', by: 'date', page: params[:page]), class: 'link' do%>
-							Date
-						<% end %>
-					<% end %>
+					</center>
 				</th>
 
 				<th><center>User Id</center></th>

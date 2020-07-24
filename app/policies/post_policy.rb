@@ -12,6 +12,10 @@ class PostPolicy < ApplicationPolicy
 	end
 
 	def update_with_ajax?
-		update?
+		admin_types.include?(user.type)
+	end
+
+	def destroy_with_ajax?
+		admin_types.include?(user.type)
 	end
 end
