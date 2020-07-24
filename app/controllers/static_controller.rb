@@ -17,9 +17,7 @@ class StaticController < ApplicationController
 			.page(params[:page]).per(
 				params[:items].then { |x| x ? x.to_i.clamp(1, 1000) : 20 }
 			).order(o)
-	end
 
-	def update_with_ajax
-
+		@recent_audit_items = AuditLog.last(10)
 	end
 end

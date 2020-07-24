@@ -17,11 +17,7 @@
 		</tbody>
 	</table>
 
-		<div class="centrify">
-		</div>
-
-	<%= params[:page] %>
-	<div id="paginator">
+	<div class="centrify" id="paginator">
 		<%= paginate @audit_logs, class: 'pagination', remote: true %>
 	</div>
 </div>

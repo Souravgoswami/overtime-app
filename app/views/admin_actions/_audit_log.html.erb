@@ -18,9 +18,23 @@
 <%
 =end %>
 
-	<td class="table-row"><%= audit_log.id %></td>
-	<td class="table-row"><%= audit_log.user.full_name %></td>
-	<td class="table-row"><%= audit_log.start_date %></td>
-	<td class="table-row"><%= audit_log.end_date.then { |x| x ? x : '-' } %></td>
-	<td class="table-row"><center><%= status_label(audit_log.status) %></center></td>
+	<td class="table-row centrify-inline-wrap">
+		<%= audit_log.id %>
+	</td>
+
+	<td class="table-row centrify-inline-wrap">
+		<%= audit_log.user.full_name %>
+	</td>
+
+	<td class="table-row centrify-inline-wrap">
+		<%= audit_log.start_date %>
+	</td>
+
+	<td class="table-row centrify-inline-wrap">
+		<%= audit_log.end_date || status_label('pending') %>
+	</td>
+
+	<td class="table-row centrify-inline-wrap">
+		<center><%= status_label(audit_log.status) %></center>
+	</td>
 </tr>

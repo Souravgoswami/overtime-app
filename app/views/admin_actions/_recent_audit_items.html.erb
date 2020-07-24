@@ -1,0 +1,17 @@
+<h1 class="header">Recent Audit Items</h1>
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th><center>#</center></th>
+			<th><center>Employee Name</center></th>
+			<th><center>Starting Week</center></th>
+			<th><center>Confirmed At</center></th>
+			<th><center>Status</center></th>
+		</tr>
+	</thead>
+
+	<tbody id="auditLogs">
+		<%= render partial: 'admin_actions/audit_log', collection: @recent_audit_items %>
+	</tbody>
+</table>

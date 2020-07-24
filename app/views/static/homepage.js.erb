@@ -1,2 +1,2 @@
-$('#submittedPosts').html("<%= escape_javascript(render(partial: 'pending_approval', collection: @pending_approvals, as: :x)) %>")
+$('#submittedPosts').html("<%= escape_javascript(render(partial: 'admin_actions/pending_approval', collection: @pending_approvals, as: :x)) %>")
 $('#paginator').html("<%= escape_javascript(paginate(@pending_approvals, remote: true).to_s) %>")
