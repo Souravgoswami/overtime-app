@@ -1,12 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-success custom-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav">
 	<%= link_to root_path, class: "navbar-brand" do %>
 		<div class="alternate">
 			<div class="logo-alternate-1">
-				<%= image_tag 'favicon_white.svg', width: '30px', height: '30px' %>
+				<%= image_tag 'favicon.svg', width: '30px', height: '30px' %>
 			</div>
 
 			<div class="logo-alternate-2">
-				<%= image_tag 'favicon.svg', width: '30px', height: '30px', class: 'logo-alternate-2' %>
+
+				<%= image_tag 'favicon_white.svg', width: '30px', height: '30px', class: 'logo-alternate-2' %>
 			</div>
 		</div>
 	<% end %>
@@ -26,29 +27,31 @@
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item <%= active?(root_path) %>">
 				<%= link_to root_path, class: 'nav-link' do %>
-					Home
+					<span data-toggle="tooltip" title="Home" class="glyphicon24 glyphicon-home icon-hover"></span>
 					<span class="sr-only">(current)</span>
 				<% end %>
 			</li>
 
-			<li class="nav-item <%= active?(new_post_path) %>">
-				<%= link_to new_post_path, class: 'nav-link', id: 'newPostFromNav' do %>
-					New Post
-					<span class="sr-only">(posts)</span>
-				<% end %>
-			</li>
+			<% if current_user %>
+				<li class="nav-item <%= active?(posts_path) %>">
+					<%= link_to posts_path, class: 'nav-link' do %>
+						<span data-toggle="tooltip" title="Time Entries" class="glyphicon24 glyphicon-clock icon-hover"></span>
+						<span class="sr-only">(posts)</span>
+					<% end %>
+				</li>
 
-			<li class="nav-item <%= active?(posts_path) %>">
-				<%= link_to posts_path, class: 'nav-link' do %>
-					Time Entries
-					<span class="sr-only">(posts)</span>
-				<% end %>
-			</li>
+				<li class="nav-item <%= active?(new_post_path) %>">
+					<%= link_to new_post_path, class: 'nav-link', id: 'newPostFromNav' do %>
+						<span data-toggle="tooltip" title="New Time Entry" class="glyphicon24 glyphicon-calendar-add icon-hover"></span>
+						<span class="sr-only">(posts)</span>
+					<% end %>
+				</li>
+			<% end %>
 
 			<% if current_user.try(:type) == 'AdminUser' %>
 				<li class="nav-item <%= active?(audit_logs_path) %>">
 					<%= link_to audit_logs_path, class: 'nav-link' do %>
-						Audit Log
+						<span data-toggle="tooltip" title="Audit Logs" class="glyphicon24 glyphicon-process icon-hover"></span>
 						<span class="sr-only">(posts)</span>
 					<% end %>
 				</li>
@@ -56,7 +59,13 @@
 
 			<li class="nav-item dropdown mr-sm-2">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Account
+					<% if current_user.is_a?(AdminUser) %>
+						<span data-toggle="tooltip" title="Account" class="glyphicon24 glyphicon-admin-<%= current_user.gender %> icon-hover"></span>
+					<% elsif current_user.is_a?(User) %>
+						<span data-toggle="tooltip" title="Account" class="glyphicon24 glyphicon-employee-<%= current_user.gender %> icon-hover"></span>
+					<% else %>
+
+					<% end %>
 				</a>
 
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

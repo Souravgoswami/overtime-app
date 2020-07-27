@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 		end
 	end
 
+	patch 'static/dismiss_welcome', to: 'static#dismiss_welcome', as: :dismiss_welcome_static
 	resources :static
 
 	get 'posts/:id/edit', to: 'posts#edit', as: :edit_post_path

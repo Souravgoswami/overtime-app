@@ -30,21 +30,21 @@
 			<div class="form-group">
 				<div style="display: none">
 					<%= f.radio_button :status, 'submitted' %>
-					<%= f.label :status, class: 'badge-custom badge-custom-success' do %>
-						<span class="glyphicon16 glyphicon-like">Approve</span>
+					<%= f.label :status, class: 'badge-custom badge-custom-blue-red' do %>
+						<span class="glyphicon16 glyphicon-like">Submitted</span>
 					<% end %>
 				</div>
 
 				<div style="display: inline-block">
 					<%= f.radio_button :status, 'approved', class: 'radio-button-toggler' %>
-					<%= f.label :status, class: 'badge-custom badge-custom-success' do %>
+					<%= f.label :status, class: 'badge-custom badge-custom-green-blue' do %>
 						<span class="glyphicon16 glyphicon-like">Approve</span>
 					<% end %>
 				</div>
 
 				<div style="display: inline-block">
 					<%= f.radio_button :status, 'rejected', class: 'radio-button-toggler' %>
-					<%= f.label :status, 'Rejected', class: 'badge-custom badge-custom-danger' do %>
+					<%= f.label :status, 'Rejected', class: 'badge-custom badge-custom-red-purple' do %>
 						<span class="glyphicon16 glyphicon-dislike">Reject</span>
 					<% end %>
 				</div>
@@ -60,11 +60,11 @@
 	<td class="centrify-inline-wrap">
 		<div class="centrify-inline">
 			<%= link_to edit_post_path(x), class: 'freeze-link' do %>
-				<span class="glyphicon20 glyphicon-edit icon-hover freeze-icon"></span>
+				<span data-toggle="tooltip" title="Edit" class="glyphicon20 glyphicon-edit icon-hover freeze-icon"></span>
 			<% end %>
 
 			<%= link_to destroy_with_ajax_post_path(x), class: 'freeze-link', method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
-				<span class="glyphicon20 glyphicon-trashcan icon-hover freeze-icon"></span>
+				<span data-toggle="tooltip" title="Delete" class="glyphicon20 glyphicon-trashcan icon-hover freeze-icon"></span>
 			<% end %>
 		</div>
 	</td>

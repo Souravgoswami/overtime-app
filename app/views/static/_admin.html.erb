@@ -1,3 +1,21 @@
+<% if Time.now.to_i - session[:dismiss_welcome].to_i > 6.hour || current_user &.id.to_i != session[:dismiss_user_id].to_i %>
+	<div class="jumbotron bg-white" id="welcome">
+		<div class="centrify">
+			<%= svg_tag 'gems.svg', width: 128 %> <h1 class="display-4">Hello, <%= current_user.full_name %></h1>
+
+			<p class="lead">
+				Welcome to the Admin Panel!
+			</p>
+
+			<hr class="my-2">
+
+			<p class="lead">
+				<%= link_to '', dismiss_welcome_static_path, 'data-toggle': 'tooltip', title: 'Close', 'data-content': 'Close', remote: true, method: :patch, class: "btn-outline-pink-animated" %>
+			</p>
+		</div>
+	</div>
+<% end %>
+
 <div class="wrapper">
 	<%= render 'admin_actions/pending_approvals' %>
 </div>

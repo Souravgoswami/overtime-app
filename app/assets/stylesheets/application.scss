@@ -163,8 +163,16 @@ tr {
 	font-weight: bold ;
 }
 
-.badge-custom-success {
-	background-color: #00A32C ;
+.badge-custom-green-blue {
+	background: linear-gradient(45deg, #00A32C, #007BFF);
+}
+
+.badge-custom-blue-red {
+	background: linear-gradient(45deg, #007BFF, #3Cc3e4, #E54759);
+}
+
+.badge-custom-red-purple {
+	background: linear-gradient(45deg, #f55, #912BFF) ;
 }
 
 .badge-custom-danger {
@@ -182,5 +190,20 @@ tr {
 
 	100% {
 		transform: translateX(125%) ;
+	}
+}
+
+
+.icon-hover {
+	transition: all 0.25s ease ;
+
+	&:hover {
+		filter: drop-shadow(4px 4px 2px #000c) ;
+	}
+
+	&:active {
+		opacity: 0.5 ;
+		filter: drop-shadow(4px 4px 2px #000c) ;
+		filter: drop-shadow(0px 0px 4px #99f) ;
 	}
 }

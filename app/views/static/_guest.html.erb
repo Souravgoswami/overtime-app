@@ -1,13 +1,25 @@
-<div class="jumbotron">
+<div class="jumbotron wrapper">
+	<%= svg_tag 'greeting', width: 128 %>
+
 	<h1 class="display-4">Hello Guest!</h1>
 
 	<p class="lead">
-		Thanks for taking interest in our company.
+		Thanks for your interest in us.
+	</p>
+
+	<hr class="my-1">
+
+	<p class="lead">
+		<a class="btn-outline-purple-animated" data-content="Learn More" href="#"></a>
 	</p>
 
 	<hr class="my-4">
 
 	<p class="lead">
-		<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+		Are you an employee? Login Instead?
+	</p>
+
+	<p class="lead">
+		<%= link_to '', new_user_session_path, class: 'btn-outline-primary-animated', 'data-content': 'login' %>
 	</p>
 </div>

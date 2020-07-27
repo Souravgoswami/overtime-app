@@ -11,5 +11,21 @@
 		<p class="lead">
 			<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 		</p>
+	</div>
 </div>
-</div>
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>
+				<div class="centrify">
+					Pending Your Confirmation
+				</div>
+			</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= render partial: 'employee_actions/pending_audit_confirmation', collection: @pending_audit_confirmations, as: :x %>
+	</tbody>
+</table>

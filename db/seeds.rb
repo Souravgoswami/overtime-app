@@ -29,8 +29,23 @@ def user_has_many_item_creation(user, i)
 		user: user,
 		status: 0,
 		start_date: Date.today - 6.days,
-		status: 0
 	)
+
+	AuditLog.create!(
+		user: user,
+		status: 0,
+		start_date: Date.today - 13.days,
+	)
+
+	AuditLog.create!(
+		user: user,
+		status: 0,
+		start_date: Date.today - 20.days,
+	)
+end
+
+def random_string(l = rand(6..12))
+	l.times.map { rand(97..122).chr }.join
 end
 
 a_z = (?a..?z).to_a
@@ -40,8 +55,10 @@ a_z.each do |x|
 		user = AdminUser.create!(
 				email: "#{x}@#{x}.#{x}",
 				password: "#{x * 6}",
-				first_name: x * 6, last_name: x * 6,
-				phone: rand(10 ** 9..10 ** 10 - 1).to_s
+				first_name: random_string,
+				last_name: random_string,
+				phone: rand(10 ** 9..10 ** 10 - 1).to_s,
+				gender: rand(2)
 		)
 
 		50.times { |i| user_has_many_item_creation(user, i) }
@@ -57,8 +74,10 @@ N.times do |n|
 		user = User.create!(
 			email: "#{n}@x.org",
 			password: "#{n.to_s.*(6)[0..5]}",
-			first_name: n.to_s, last_name: n.to_s,
-			phone: rand(10 ** 9..10 ** 10 - 1).to_s
+			first_name: random_string,
+			last_name: random_string,
+			phone: rand(10 ** 9..10 ** 10 - 1).to_s,
+			gender: rand(2)
 		)
 
 		50.times { |i| user_has_many_item_creation(user, i) }
@@ -67,4 +86,4 @@ N.times do |n|
 	print "\e[2K#{n} / #{N}\r"
 end
 
-puts "#{N} posts have been created!"
+puts "#{N} Users have been created!"
