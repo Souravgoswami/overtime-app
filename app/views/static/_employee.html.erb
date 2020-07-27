@@ -1,31 +1,45 @@
-<div class="jumbotron">
-	<div class="wrapper">
-		<h1 class="display-4">Hello <%= current_user.full_name %></h1>
+<% if Time.now.to_i - session[:dismiss_welcome].to_i > 6.hour || current_user &.id.to_i != session[:dismiss_user_id].to_i %>
+	<div class="jumbotron bg-white" id="welcome">
+		<div class="centrify">
+			<%= svg_tag 'quality.svg', width: 128 %> <h1 class="display-4">Hello, <%= current_user.full_name %></h1>
 
-		<p class="lead">
-			Thanks for taking interest in our company.
-		</p>
+			<p class="lead">
+				Welcome!
+			</p>
 
-		<hr class="my-4">
+			<hr class="my-2">
 
-		<p class="lead">
-			<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-		</p>
+			<p class="lead">
+				<%= link_to '', dismiss_welcome_static_path, 'data-toggle': 'tooltip', title: 'Close', 'data-content': 'Close', remote: true, method: :patch, class: "btn-outline-pink-animated" %>
+			</p>
+		</div>
+	</div>
+<% end %>
+
+<hr class="mb-5">
+
+<div class="row">
+	<div class="col-md-12 mb-4">
+		<div class="centrify">
+			<h2>Overtime Manager</h2>
+		</div>
+	</div>
+
+	<div class="col-md-12 mb-4">
+		<div class="centrify">
+			<%= link_to '', new_post_path, 'data-content': "Request Overtime", class: 'btn-outline-orange-animated' %>
+		</div>
 	</div>
 </div>
 
-<table class="table table-borderless table-hover">
-	<thead>
-		<tr>
-			<th>
-				<div class="centrify">
-					Pending Your Confirmation
-				</div>
-			</th>
-		</tr>
-	</thead>
+<% if @pending_audit_confirmations.count > 0 %>
+	<div class="row">
+		<div class="row col-md-12" id="pending_audit_confirmations">
+			<%= render partial: 'employee_actions/pending_audit_confirmation', collection: @pending_audit_confirmations, as: :x, locals: { button_colours: @button_colours } %>
+		</div>
 
-	<tbody>
-		<%= render partial: 'employee_actions/pending_audit_confirmation', collection: @pending_audit_confirmations, as: :x %>
-	</tbody>
-</table>
+		<div class="col-md-12 centrify mt-5" id="paginator">
+			<%= paginate @pending_audit_confirmations, remote: true %>
+		</div>
+	</div>
+<% end %>

@@ -1,2 +1,7 @@
-$('#submittedPosts').html("<%= escape_javascript(render(partial: 'admin_actions/pending_approval', collection: @pending_approvals, as: :x)) %>")
-$('#paginator').html("<%= escape_javascript(paginate(@pending_approvals, remote: true).to_s) %>")
+<% if admin_types.include?(current_user.try(:type)) %>
+	$('#submittedPosts').html("<%= escape_javascript(render(partial: 'admin_actions/pending_approval', collection: @pending_approvals, as: :x)) %>")
+	$('#paginator').html("<%= escape_javascript(paginate(@pending_approvals, remote: true).to_s) %>")
+<% elsif current_user.is_a?(User) %>
+	$('#pending_audit_confirmations').html("<%= escape_javascript(render(partial: 'employee_actions/pending_audit_confirmation', collection: @pending_audit_confirmations, as: :x, locals: { button_colours: @button_colours })) %>")
+	$('#paginator').html("<%= escape_javascript(paginate(@pending_audit_confirmations, remote: true).to_s) %>")
+<% end %>

@@ -1,12 +1,21 @@
-<tr class="table" id="table_<%= x.id %>">
-	<td class="table-row centrify">
-		<%= link_to '', confirm_with_ajax_audit_log_path(x),
-			method: :patch,
-			remote: true,
-			class: "btn-outline-#{%w(blue pink warning danger).sample}-animated",
-			id: "confirm_#{x.id}",
-			'data-content': "I confirm that I did not perform any overtime for the week of : #{x.start_date}",
-			data: { confirm: 'Are you sure you want to confirm that you did not perform any overtime?' }
-		%>
-	</td>
-</tr>
+<div class="col-md-3 p-2" id="table_<%= x.id %>">
+	<div class="card">
+		<div class="content-inject font-caveat" data-content="Overtime for <%= x.start_date %>">
+			<%= image_tag 'double-decker',
+				class: 'card-img-top',
+				alt: x.start_date
+			%>
+		</div>
+
+		<div class="card-body centrify font-alice">
+			<%= link_to '', confirm_with_ajax_audit_log_path(x),
+				method: :patch,
+				remote: true,
+				class: "#{button_colours.rotate![0]}",
+				id: "confirm_#{x.id}",
+				'data-content': "Dismiss",
+				data: { confirm: 'Are you sure you want to confirm that you did not perform any overtime?' }
+			%>
+		</div>
+	</div>
+</div>

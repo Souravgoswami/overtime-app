@@ -1,5 +1,3 @@
-@import "bourbon" ;
-
 body, html {
 	background-color: #fff ;
 }
@@ -193,7 +191,6 @@ tr {
 	}
 }
 
-
 .icon-hover {
 	transition: all 0.25s ease ;
 
@@ -206,4 +203,66 @@ tr {
 		filter: drop-shadow(4px 4px 2px #000c) ;
 		filter: drop-shadow(0px 0px 4px #99f) ;
 	}
+}
+
+.content-inject {
+	position: relative ;
+	overflow: hidden ;
+	cursor: pointer ;
+
+	&::before {
+		content: attr(data-content) ;
+		font-family: attr(font) !important ;
+		color: #000 ;
+		position: absolute ;
+		top: 0 ;
+		left: 0 ;
+		width: 100% ;
+		height: 100% ;
+		font-size: 20px ;
+		display: flex ;
+		align-items: center ;
+		justify-content: center ;
+		z-index: 2 ;
+		transition: all 0.25s ease ;
+	}
+
+	&::after {
+		content: '' ;
+		background-color: #000b ;
+		position: absolute ;
+		top: 0 ;
+		left: 0 ;
+		transform: translateY(-100%) ;
+		width: 100% ;
+		height: 100% ;
+		z-index: 1 ;
+		transition: all 0.25s ease ;
+
+	}
+
+	& img {
+		transition: transform 1s ease, filter 1s ease ;
+	}
+
+	&:hover img {
+		transform: scale(5) rotate(10deg) ;
+	}
+
+	&:hover::before {
+		filter: drop-shadow(0px 0px 4px #fff) ;
+		color: #fff ;
+	}
+
+	&:hover::after {
+		transform: translateY(0%) ;
+	}
+}
+
+.font-caveat {
+	font-family: 'Caveat', cursive !important ;
+}
+
+.font-alice {
+	font-family: 'Alice', serif !important ;
 }

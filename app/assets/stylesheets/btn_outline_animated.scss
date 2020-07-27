@@ -53,9 +53,9 @@
 	&:active {
 		&::before {
 			opacity: 1 ;
-			transform-origin: top ;
+			transform-origin: center ;
 			transform: translateY(-100%) scale(1.025) ;
-			border-radius: 100% ;
+			transition: all 0.125s ease ;
 		}
 	}
 
@@ -79,11 +79,6 @@
 
 	&::after {
 		color: $bg ;
-	}
-
-	&:active::before {
-		color: $bg ;
-		background-color: $fg ;
 	}
 }
 

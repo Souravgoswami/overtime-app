@@ -1,6 +1,2 @@
-notify("Successfully confirmed <%= @audit_log.id %>", "Ok")
-$("#table_<%= @audit_log.id %>").css('opacity', '0.5').click( function() { return false } )
-
-setTimeout(() => {
-	$("#table_<%= @audit_log.id %>").css('animation', 'slideout 750ms linear').fadeOut(750)
-}, 1000)
+notify("Successfully confirmed that you didn't perform any overtime for <%= @audit_log.start_date %>", "Ok")
+$("#table_<%= @audit_log.id %>").click( function() { return false } ).fadeOut(750)

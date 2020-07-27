@@ -20,7 +20,16 @@ class StaticController < ApplicationController
 
 			@recent_audit_items = AuditLog.last(10)
 		elsif current_user
-			@pending_audit_confirmations = current_user.audit_logs.pending.order('start_date ASC')
+			@button_colours = %w(
+				primary danger
+				warning info success
+				pink blue green orange
+				purple emerald
+			).each { |x| x.prepend('btn-outline-').concat('-animated') }
+
+			@pending_audit_confirmations = current_user.audit_logs
+				.pending.order('start_date ASC').page(params[:page])
+				.per((params[:items] || 12).to_i.clamp(1, 64))
 		end
 	end
 

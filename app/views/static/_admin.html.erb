@@ -20,7 +20,9 @@
 	<%= render 'admin_actions/pending_approvals' %>
 </div>
 
-<div class="centrify" id="paginator"><%= paginate @pending_approvals, remote: true %></div>
+<div class="centrify" id="paginator">
+	<%= paginate @pending_approvals, remote: true %>
+</div>
 
 <div class="wrapper">
 	<%= render 'admin_actions/recent_audit_items' %>
