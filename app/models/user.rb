@@ -9,7 +9,7 @@ class User < ApplicationRecord
 	validates :phone, presence: true, length: { minimum: 10, maximum: 10 }, allow_blank: false
 	validates_format_of :phone, with: /\b\d{10}\b/, multiline: false
 
-	enum gender: { male: 0, female: 1 }
+	enum gender: { female: 0, male: 1 }
 
 	has_many :posts
 	has_many :audit_logs

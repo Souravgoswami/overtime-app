@@ -1,11 +1,12 @@
-<tr class="table">
-	<td class="table-row">
-		<%= link_to '', root_path,
+<tr class="table" id="table_<%= x.id %>">
+	<td class="table-row centrify">
+		<%= link_to '', confirm_with_ajax_audit_log_path(x),
+			method: :patch,
+			remote: true,
 			class: "btn-outline-#{%w(blue pink warning danger).sample}-animated",
-
+			id: "confirm_#{x.id}",
 			'data-content': "I confirm that I did not perform any overtime for the week of : #{x.start_date}",
 			data: { confirm: 'Are you sure you want to confirm that you did not perform any overtime?' }
-
-			%>
+		%>
 	</td>
 </tr>

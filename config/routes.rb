@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-	resources :audit_logs, except: %i[new edit destroy]
+	resources :audit_logs, except: %i[new edit destroy] do
+		member do
+			patch :confirm_with_ajax
+		end
+	end
 
 	namespace :admin do
 		resources :users
