@@ -5,29 +5,42 @@ MARGIN = 4
 abort("You need to be at the project's / directory before running #{Process.argv0}") unless Dir.exist?('app')
 
 GLYPHICON_DIR = 'app/assets/glyphicons'
-scss_file = 'app/assets/stylesheets/glyphicon.css'
+scss_file = 'app/assets/stylesheets/glyphicon.scss'
 
 ICONS = Dir.children(GLYPHICON_DIR)
 
-files = Dir.children(GLYPHICON_DIR).map! { |x| x.prepend("#{GLYPHICON_DIR}/") }
+files = Dir.children(GLYPHICON_DIR).map! { |x| %Q("#{x.split(?.).tap(&:pop).join(?.)}") }
 
-css = "/*\n\tIncluded files:\n\t#{files.join(' ')}\n\n\tAvailable sizes:\n\t#{SIZES.join(' ')}\n\n" +
-	%[\tUsage example:\n\t<span class="glyphicon#{SIZES.sample} glyphicon-#{files.sample}">Icon beside Text</span>\n*/\n\n] +
-	ICONS.map do |i|
-		i_basename = i.split(?.).tap(&:pop).join(?.)
+css = %[/*\t Usage example:\n\t<span class="glyphicon#{SIZES.sample} glyphicon-#{files.sample}">Icon beside Text</span>\n*/\n\n] +
 
-		SIZES.map do |s|
-			<<~EOF.tap { |x| x.delete!("\t\n") }
-				.glyphicon#{s}.glyphicon-#{i_basename}::before{
-					content:'';
-					padding:#{s}px #{s}px #{s}px 0;
-					background:transparent url("#{i}") center center no-repeat;
-					background-size:#{s}px;
-					margin-right: #{MARGIN}px ;
+	<<~EOF
+		$icons: (#{files.join(?,)}) ;
+		$sizes: #{SIZES.join(?,)} ;
+
+		@mixin background($name, $size) {
+			display: inline ;
+			transition: all 0.125s ease ;
+
+			&::before {
+				content: '' ;
+				padding-left: \#{$size}px ;
+				padding-top: \#{$size}px ;
+				padding-bottom: \#{$size}px ;
+				background: transparent url($name) center center no-repeat ;
+				background-size: \#{$size}px ;
+				margin-right: 4px ;
+				transition: all 0.125s ease ;
+			}
+		}
+
+		@each $size in $sizes {
+			.glyphicon\#{$size} {
+				@each $icon in $icons {
+					&.glyphicon-\#{$icon} { @include background($icon, $size) }
 				}
-			EOF
-		end
-	end.join + "\n\n/*\n\tGo to the top of the file for usage guide...\n*/"
+			}
+		}
+	EOF
 
 Dir.mkdir(GLYPHICON_DIR) unless Dir.exist?(GLYPHICON_DIR)
 

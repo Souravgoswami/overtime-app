@@ -1,0 +1,30 @@
+/*	 Usage example:
+	<span class="glyphicon28 glyphicon-"quality"">Icon beside Text</span>
+*/
+
+$icons: ("edit","trashcan","write","find","user_purple","users-admin","cancel","arrow-up","arrow-down","like2","like","dislike","add","add-time","clock","home","user-female","user-male","employee-female","employee-male","admin-female","admin-male","ruby","opal","quality","topaz","diamond-1","emerald","diamond","","process","calendar-add") ;
+$sizes: 8,12,16,20,24,28,32,36,40,44,48,52,56,60,64 ;
+
+@mixin background($name, $size) {
+	display: inline ;
+	transition: all 0.125s ease ;
+
+	&::before {
+		content: '' ;
+		padding-left: #{$size}px ;
+		padding-top: #{$size}px ;
+		padding-bottom: #{$size}px ;
+		background: transparent url($name) center center no-repeat ;
+		background-size: #{$size}px ;
+		margin-right: 4px ;
+		transition: all 0.125s ease ;
+	}
+}
+
+@each $size in $sizes {
+	.glyphicon#{$size} {
+		@each $icon in $icons {
+			&.glyphicon-#{$icon} { @include background($icon, $size) }
+		}
+	}
+}
