@@ -31,11 +31,17 @@ module Overtime
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    # config.assets.precompile << %w( .svg )
 
     config.time_zone = 'Kolkata'
-    # config.assets.enabled = true
+
+    config.assets.compile = true
+    config.assets.enabled = true
+    config.serve_static_assets = true
+    config.assets.digest = true
+    config.cache_classes = true
+
     config.assets.paths << Rails.root.join('app', 'assets', 'glyphicons')
-    config.assets.precompile << %w( .svg )
     config.autoload_paths << Rails.root.join('lib')
   end
 end

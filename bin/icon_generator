@@ -9,7 +9,7 @@ scss_file = 'app/assets/stylesheets/glyphicon.css'
 
 ICONS = Dir.children(GLYPHICON_DIR)
 
-files = Dir.children(GLYPHICON_DIR).map! { |x| x.split(?.).tap(&:pop).join(?.) }
+files = Dir.children(GLYPHICON_DIR).map! { |x| x.prepend("#{GLYPHICON_DIR}/") }
 
 css = "/*\n\tIncluded files:\n\t#{files.join(' ')}\n\n\tAvailable sizes:\n\t#{SIZES.join(' ')}\n\n" +
 	%[\tUsage example:\n\t<span class="glyphicon#{SIZES.sample} glyphicon-#{files.sample}">Icon beside Text</span>\n*/\n\n] +
