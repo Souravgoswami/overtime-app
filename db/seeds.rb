@@ -1,5 +1,5 @@
 require 'etc'
-N = 100
+N = 50
 
 class ForkProcess
 	@@processes = []
@@ -61,7 +61,7 @@ a_z.each do |x|
 				gender: rand(2)
 		)
 
-		50.times { |i| user_has_many_item_creation(user, i) }
+		20.times { |i| user_has_many_item_creation(user, i) }
 	# end
 
 	print "\e[2K#{a_z.index(x)} / #{a_z.count}\r"
@@ -80,7 +80,7 @@ N.times do |n|
 			gender: rand(2)
 		)
 
-		50.times { |i| user_has_many_item_creation(user, i) }
+		20.times { |i| user_has_many_item_creation(user, i) }
 	# end
 
 	print "\e[2K#{n} / #{N}\r"
