@@ -47,5 +47,3 @@ gem "twilio-ruby", "~> 5.39"
 gem "dotenv-rails", "~> 2.7"
 
 gem "selenium-webdriver", "~> 3.142"
-
-gem "rails_12factor", "~> 0.0.3"
