@@ -7,6 +7,15 @@ module ApplicationHelper
 		"active" if current_page?(path)
 	end
 
+	def employee?
+		current_user.try(:type) == 'Employee'
+	end
+
+	def admin?
+		current_user.try(:type) == 'AdminUser'
+
+	end
+
 	def flash_message_manager
 		msg = flash[:notice] || flash[:alert] || flash[:error]
 		notify(msg).html_safe if msg

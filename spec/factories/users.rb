@@ -1,5 +1,5 @@
 FactoryBot.define do
-	factory :user do
+	factory :user, class: 'Employee' do
 		email { 'test@test.com' }
 		password { 'asdfasdf' }
 		password_confirmation { 'asdfasdf' }
@@ -9,7 +9,7 @@ FactoryBot.define do
 		gender { [0, 1].sample }
 	end
 
-	factory :user2, class: 'User' do
+	factory :user2, class: 'Employee' do
 		email { 'othertest@test.com' }
 		password { 'asdfasdf' }
 		password_confirmation { 'asdfasdf' }

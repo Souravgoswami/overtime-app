@@ -33,15 +33,17 @@
 					<% end %>
 				</li>
 
-				<li class="nav-item <%= active?(new_post_path) %>">
-					<%= link_to new_post_path, class: 'nav-link', id: 'newPostFromNav' do %>
-						<span data-toggle="tooltip" title="New Time Entry" class="glyphicon24 glyphicon-calendar-add icon-hover"></span>
-						<span class="sr-only">(posts)</span>
-					<% end %>
-				</li>
+				<% if employee? %>
+					<li class="nav-item <%= active?(new_post_path) %>">
+						<%= link_to new_post_path, class: 'nav-link', id: 'newPostFromNav' do %>
+							<span data-toggle="tooltip" title="New Time Entry" class="glyphicon24 glyphicon-calendar-add icon-hover"></span>
+							<span class="sr-only">(posts)</span>
+						<% end %>
+					</li>
+				<% end %>
 			<% end %>
 
-			<% if current_user.try(:type) == 'AdminUser' %>
+			<% if admin? %>
 				<li class="nav-item <%= active?(audit_logs_path) %>">
 					<%= link_to audit_logs_path, class: 'nav-link' do %>
 						<span data-toggle="tooltip" title="Audit Logs" class="glyphicon24 glyphicon-process icon-hover"></span>
@@ -52,9 +54,9 @@
 
 			<li class="nav-item dropdown mr-sm-2">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<% if current_user.is_a?(AdminUser) %>
+					<% if admin? %>
 						<span data-toggle="tooltip" title="Account" class="glyphicon24 glyphicon-admin-<%= current_user.gender %> icon-hover"></span>
-					<% elsif current_user.is_a?(User) %>
+					<% elsif employee? %>
 						<span data-toggle="tooltip" title="Account" class="glyphicon24 glyphicon-employee-<%= current_user.gender %> icon-hover"></span>
 					<% else %>
 
@@ -62,7 +64,7 @@
 				</a>
 
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-					<% if current_user.try(:type) == 'AdminUser' %>
+					<% if admin? %>
 						<%= link_to admin_root_path, class: "dropdown-item" do %>
 							Admin Dashboard
 						<% end %>

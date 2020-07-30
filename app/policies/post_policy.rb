@@ -18,4 +18,8 @@ class PostPolicy < ApplicationPolicy
 	def destroy_with_ajax?
 		admin_types.include?(user.type)
 	end
+
+	def new?
+		user.try(:type) == 'Employee'
+	end
 end
