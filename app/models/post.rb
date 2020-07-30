@@ -8,6 +8,8 @@ class Post < ApplicationRecord
 
 	after_save :update_audit_log
 
+	before_update :set_end_date, if: :confirmed?
+
 	private
 
 	def update_audit_log
@@ -15,5 +17,9 @@ class Post < ApplicationRecord
 			user_id: self.user_id,
 			start_date: (self.date - 7.days .. self.date)
 		).map { |x| x &.confirmed! }
+	end
+
+	def set_end_date
+		self.end_date = Date.today
 	end
 end
