@@ -1,20 +1,22 @@
+# root_url = Overtime::Application.config.action_mailer.default_url_options[:host]
+
 namespace :notification do
 	desc "Sends SMS notification to employees asking them to log whether or ot they had overtime"
 	task sms: :environment do
-		if Time.now.sunday?
-			# 1. Schedule task to run at evern Sunday at 5:00 PM
-			# 2. Iterate over all employees
-			# 3. Skip admin users
-			# 4. Send a message that has instructions  and a link to log time
+		root_url = Overtime::Application.config.action_mailer.default_url_options[:host]
 
-			# User.all do |u|
-			# 	# SmsTool.send_sms()
-			# end
+		Employee.all.each do |e|
+			notification_message = <<~EOF
+				Hello #{e.first_name},
+					Please login to the overtime management dashboard to request overtime or confirm your hours for last week.
+				Visit #{root_url}
+			EOF
 
-			# number: 1234567890
-			# No spaces or dashes in phone number
-			# Has to be exactly 10 characters
-			# All characters have to be a number
+			SmsTool.send_sms(
+				number: e.phone, message: notification_message
+			)
+
+			exit!
 		end
 	end
 

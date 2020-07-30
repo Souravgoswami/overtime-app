@@ -1,13 +1,18 @@
 require 'etc'
-N = 50
+N = 20
+FORK = true
 
 class ForkProcess
 	@@processes = []
 
-	def self.fork_process(&block)
+	def self.fork_process(fork_enabled, &block)
 		while true
 			unless @@processes.count { |x| IO.read("/proc/#{x}/stat").split(?\s)[2] != ?Z } > Etc.nprocessors * 6
-				@@processes << fork { block === self }
+				if fork_enabled
+					@@processes << fork { block === self }
+				else
+					block === self unless fork_enabled
+				end
 				break
 			else
 				redo
@@ -51,7 +56,7 @@ end
 a_z = (?a..?z).to_a
 
 a_z.each do |x|
-	# ForkProcess.fork_process do
+	ForkProcess.fork_process(FORK) do
 		user = AdminUser.create!(
 				email: "#{x}@#{x}.#{x}",
 				password: "#{x * 6}",
@@ -62,7 +67,7 @@ a_z.each do |x|
 		)
 
 		20.times { |i| user_has_many_item_creation(user, i) }
-	# end
+	end
 
 	print "\e[2K#{a_z.index(x)} / #{a_z.count}\r"
 end
@@ -70,8 +75,8 @@ end
 puts "Created #{a_z.length} admin users"
 
 N.times do |n|
-	# ForkProcess.fork_process do
-		user = User.create!(
+	ForkProcess.fork_process(FORK) do
+		user = Employee.create!(
 			email: "#{n}@x.org",
 			password: "#{n.to_s.*(6)[0..5]}",
 			first_name: random_string,
@@ -81,7 +86,7 @@ N.times do |n|
 		)
 
 		20.times { |i| user_has_many_item_creation(user, i) }
-	# end
+	end
 
 	print "\e[2K#{n} / #{N}\r"
 end
