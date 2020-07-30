@@ -9,14 +9,14 @@ namespace :notification do
 			notification_message = <<~EOF
 				Hello #{e.first_name},
 					Please login to the overtime management dashboard to request overtime or confirm your hours for last week.
-				Visit #{root_url}
+					Visit #{root_url}
 			EOF
+
+			AuditLog.create!(user_id: e.id)
 
 			SmsTool.send_sms(
 				number: e.phone, message: notification_message
 			)
-
-			exit!
 		end
 	end
 
