@@ -6,20 +6,22 @@ class Post < ApplicationRecord
 
 	scope :posts_by, ->user { where(user_id: user.id) }
 
-	after_save :update_audit_log
-
-	before_update :set_end_date, if: :confirmed?
+	after_save :confirm_audit_log, if: :submitted?
+	after_save :unconfirm_audit_log, if: :rejected?
 
 	private
 
-	def update_audit_log
+	def confirm_audit_log
 		AuditLog.where(
 			user_id: self.user_id,
 			start_date: (self.date - 7.days .. self.date)
 		).map { |x| x &.confirmed! }
 	end
 
-	def set_end_date
-		self.end_date = Date.today
+	def unconfirm_audit_log
+		AuditLog.where(
+			user_id: self.user_id,
+			start_date: (self.date - 7.days .. self.date)
+		).map { |x| x &.pending! }
 	end
 end
