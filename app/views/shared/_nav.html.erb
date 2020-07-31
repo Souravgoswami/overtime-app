@@ -28,7 +28,7 @@
 			<% if current_user %>
 				<li class="nav-item <%= active?(posts_path) %>">
 					<%= link_to posts_path, class: 'nav-link' do %>
-						<span data-toggle="tooltip" title="Time Entries" class="glyphicon24 glyphicon-clock icon-hover"></span>
+						<span data-toggle="tooltip" title="Requested Hours" class="glyphicon24 glyphicon-clock icon-hover"></span>
 						<span class="sr-only">(posts)</span>
 					<% end %>
 				</li>
@@ -36,7 +36,7 @@
 				<% if employee? %>
 					<li class="nav-item <%= active?(new_post_path) %>">
 						<%= link_to new_post_path, class: 'nav-link', id: 'newPostFromNav' do %>
-							<span data-toggle="tooltip" title="New Time Entry" class="glyphicon24 glyphicon-calendar-add icon-hover"></span>
+							<span data-toggle="tooltip" title="New Hour" class="glyphicon24 glyphicon-calendar-add icon-hover"></span>
 							<span class="sr-only">(posts)</span>
 						<% end %>
 					</li>

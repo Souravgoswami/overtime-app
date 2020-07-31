@@ -27,7 +27,7 @@ def user_has_many_item_creation(user, i)
 		date: Date.today,
 		rationale: "User #{user.id}'s post: #{i}",
 		user_id: user.id,
-		overtime_request: rand(0.5..3.0).round(1)
+		daily_hours: rand(0.5..3.0).round(1)
 	)
 
 	AuditLog.create!(

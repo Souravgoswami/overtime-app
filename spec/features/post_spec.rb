@@ -33,7 +33,7 @@ describe 'navigate' do
 			post2 = FactoryBot.create(:post2)
 
 			other_user = FactoryBot.create(:user2)
-			other_post = Post.create(date: Date.today, rationale: "This post shouldn't be seen", user: other_user, overtime_request: 3.5)
+			other_post = Post.create(date: Date.today, rationale: "This post shouldn't be seen", user: other_user, daily_hours: 3.5)
 
 			visit posts_path
 			expect(page).to_not have_content("This post shouldn't be seen")
@@ -70,7 +70,7 @@ describe 'navigate' do
 		it 'can be created from new form page' do
 			fill_in 'post[date]', with: Date.today
 			fill_in 'post[rationale]', with: 'Some rationale'
-			fill_in 'post[overtime_request]', with: 4.5
+			fill_in 'post[daily_hours]', with: 4.5
 
 			expect { page.find('#submit', visible: false).click }.to change(Post, :count).by(1)
 		end
@@ -78,7 +78,7 @@ describe 'navigate' do
 		it 'will have a user associated with it' do
 			fill_in 'post[date]', with: Date.today
 			fill_in 'post[rationale]', with: 'User Association'
-			fill_in 'post[overtime_request]', with: 4.5
+			fill_in 'post[daily_hours]', with: 4.5
 
 			find('#submit', visible: false).click
 

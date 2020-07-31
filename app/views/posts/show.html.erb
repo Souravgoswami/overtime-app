@@ -5,7 +5,7 @@
 <table class="table table-hover table-bordered">
 	<thead>
 		<tr>
-			<th>Overtime Amount Requested</th>
+			<th>Hours Worked</th>
 			<th>Employee Name</th>
 			<th>Employee ID</th>
 			<th>Date</th>
@@ -15,7 +15,7 @@
 
 	<tbody>
 		<tr class="table">
-			<td class="table-row"><span> <%= @post.overtime_request %></span></td>
+			<td class="table-row"><span> <%= @post.daily_hours %></span></td>
 			<td class="table-row"><span><%= @post .user.full_name %></span></td>
 			<td class="table-row"><span><%= @post .user_id %></span></td>
 			<td class="table-row"><span>Date: <%= @post.date %></span></td>

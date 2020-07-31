@@ -2,8 +2,8 @@
 <br>
 
 <% if @post.errors.any? %>
-	<%= @post.errors.full_messages.each do |x| %>
-		<%= notify(x) %>
+	<% @post.errors.full_messages.each do |x| %>
+		<% notify(x) %>
 	<% end %>
 <% end %>
 
