@@ -26,6 +26,15 @@ describe 'navigate' do
 
 			visit posts_path
 			expect(page).to have_content(/work_performed|content/)
+
+			post1 = FactoryBot.create(:post1)
+			post2 = FactoryBot.create(:post2)
+
+			post2.update!(user_id: post1.user.id)
+			visit posts_path
+
+			expect(page).to have_text(post1.work_performed)
+			expect(page).to have_text(post2.work_performed)
 		end
 
 		it 'has a scope so that only post creators can see their posts' do
