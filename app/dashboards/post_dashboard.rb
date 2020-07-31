@@ -6,7 +6,7 @@ class PostDashboard < Administrate::BaseDashboard
 		id: Field::Number.with_options(searchable: true),
 		status: Field::Text.with_options(searchable: false),
 		date: Field::Date.with_options(searchable: true),
-		rationale: Field::Text.with_options(searchable: true),
+		work_performed: Field::Text.with_options(searchable: true),
 		created_at: Field::DateTime.with_options(searchable: false),
 		updated_at: Field::DateTime.with_options(searchable: false),
 	}.freeze
@@ -16,7 +16,7 @@ class PostDashboard < Administrate::BaseDashboard
 		id
 		status
 		date
-		rationale
+		work_performed
 	].freeze
 
 	SHOW_PAGE_ATTRIBUTES = %i[
@@ -24,7 +24,7 @@ class PostDashboard < Administrate::BaseDashboard
 		id
 		status
 		date
-		rationale
+		work_performed
 		created_at
 		updated_at
 	].freeze
@@ -32,7 +32,7 @@ class PostDashboard < Administrate::BaseDashboard
 	FORM_ATTRIBUTES = %i[
 		user
 		date
-		rationale
+		work_performed
 	].freeze
 
 	#   COLLECTION_FILTERS = {

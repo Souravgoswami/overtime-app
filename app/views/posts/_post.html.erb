@@ -17,5 +17,5 @@
 	<td class="table-row"><%= x.daily_hours.round(1) %></td>
 	<td class="table-row"><center><%= status_label(x.status) %></center></td>
 	<td class="table-row"><%= x.date %></td>
-	<td class="table-row"><%= x.rationale.then { |y| y.length > 50 ? y[0..50] + '...' : y } %></td>
+	<td class="table-row"><%= x.work_performed.then { |y| y.length > 50 ? y[0..50] + '...' : y } %></td>
 </tr>

@@ -3,7 +3,7 @@
 
 <% if @post.errors.any? %>
 	<% @post.errors.full_messages.each do |x| %>
-		<% notify(x) %>
+		<%= notify(x) %>
 	<% end %>
 <% end %>
 

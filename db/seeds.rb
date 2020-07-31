@@ -25,7 +25,7 @@ end
 def user_has_many_item_creation(user, i)
 	Post.create!(
 		date: Date.today,
-		rationale: "User #{user.id}'s post: #{i}",
+		work_performed: "User #{user.id}'s post: #{i}",
 		user_id: user.id,
 		daily_hours: rand(0.5..3.0).round(1)
 	)
