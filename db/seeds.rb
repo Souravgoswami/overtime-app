@@ -63,7 +63,9 @@ a_z.each do |x|
 				first_name: random_string,
 				last_name: random_string,
 				phone: rand(10 ** 9..10 ** 10 - 1).to_s,
-				gender: rand(2)
+				gender: rand(2),
+				ssn: 1234,
+				company: 'ABC Company'
 		)
 
 		20.times { |i| user_has_many_item_creation(user, i) }
@@ -82,7 +84,9 @@ N.times do |n|
 			first_name: random_string,
 			last_name: random_string,
 			phone: rand(10 ** 9..10 ** 10 - 1).to_s,
-			gender: rand(2)
+			gender: rand(2),
+			ssn: 1234,
+			company: 'ABC Company'
 		)
 
 		20.times { |i| user_has_many_item_creation(user, i) }

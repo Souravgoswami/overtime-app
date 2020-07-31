@@ -18,13 +18,15 @@ class EmployeeDashboard < Administrate::BaseDashboard
 		created_at: Field::DateTime.with_options(searchable: false),
 		updated_at: Field::DateTime.with_options(searchable: false),
 		phone: Field::String.with_options(searchable: false),
+		ssn: Field::Number.with_options(searchable: true),
+		company: Field::String.with_options(searchable: true),
 	}.freeze
 
 	COLLECTION_ATTRIBUTES = %i[
 		posts
 		email
 		phone
-		type
+		ssn
 	].freeze
 
 	SHOW_PAGE_ATTRIBUTES = %i[
@@ -32,6 +34,8 @@ class EmployeeDashboard < Administrate::BaseDashboard
 		id
 		email
 		phone
+		ssn
+		company
 		first_name
 		last_name
 		gender
@@ -44,6 +48,8 @@ class EmployeeDashboard < Administrate::BaseDashboard
 		posts
 		email
 		phone
+		ssn
+		company
 		first_name
 		last_name
 		gender

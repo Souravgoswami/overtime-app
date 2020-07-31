@@ -22,7 +22,9 @@ class AdminUserDashboard < Administrate::BaseDashboard
 		type: Field::String.with_options(searchable: false),
 		created_at: Field::DateTime.with_options(searchable: false),
 		updated_at: Field::DateTime.with_options(searchable: false),
-		phone: Field::String.with_options(searchable: false),
+		phone: Field::String.with_options(searchable: true),
+		ssn: Field::Number.with_options(searchable: true),
+		company: Field::String.with_options(searchable: true),
 	}.freeze
 
 	# COLLECTION_ATTRIBUTES
@@ -33,7 +35,9 @@ class AdminUserDashboard < Administrate::BaseDashboard
 	COLLECTION_ATTRIBUTES = %i[
 		id
 		email
-		posts
+		phone
+		ssn
+		company
 	].freeze
 
 	# SHOW_PAGE_ATTRIBUTES
@@ -42,14 +46,12 @@ class AdminUserDashboard < Administrate::BaseDashboard
 		posts
 		id
 		email
-		encrypted_password
-		reset_password_token
-		reset_password_sent_at
-		remember_created_at
+		phone
+		ssn
+		company
 		first_name
 		last_name
 		type
-		password
 		created_at
 		updated_at
 	].freeze
@@ -61,6 +63,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
 		posts
 		email
 		phone
+		ssn
 		first_name
 		last_name
 		password

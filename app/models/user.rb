@@ -6,6 +6,12 @@ class User < ApplicationRecord
 
 	validates_presence_of :first_name, :last_name
 	validates :gender, presence: true
+
+	validates :ssn, presence: true, length: { minimum: 4, maximum: 4 }, allow_blank: false
+	validates_numericality_of :ssn
+
+	validates :company, presence: true
+
 	validates :phone, presence: true, length: { minimum: 10, maximum: 10 }, allow_blank: false
 	validates_format_of :phone, with: /\b\d{10}\b/, multiline: false
 

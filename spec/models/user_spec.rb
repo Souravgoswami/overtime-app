@@ -37,6 +37,9 @@ RSpec.describe User, type: :model do
 
 			@user.phone = '#123456789'
 			expect(@user).to_not be_valid
+
+			@user.phone = '#1234567-89'
+			expect(@user).to_not be_valid
 		end
 
 		it 'requires the phone attr to only contain 10 characters' do
@@ -46,6 +49,36 @@ RSpec.describe User, type: :model do
 			@user.phone = 10 ** 8
 			expect(@user).to_not be_valid
 		end
+
+		it 'cannot be created wthout an ssn' do
+			@user.ssn = nil
+			expect(@user).to_not be_valid
+		end
+
+		it 'requires the ssn attr to only contain integers' do
+			@user.ssn = '111a'
+			expect(@user).to_not be_valid
+
+			@user.ssn = 'a111'
+			expect(@user).to_not be_valid
+
+			@user.ssn = '1*11'
+			expect(@user).to_not be_valid
+		end
+
+		it 'requires the ssn attr to only contain 10 characters' do
+			@user.ssn = 10 ** 10
+			expect(@user).to_not be_valid
+
+			@user.ssn = 10 ** 8
+			expect(@user).to_not be_valid
+		end
+
+		it 'requires a company' do
+			@user.company = nil
+			expect(@user).to_not be_valid
+		end
+
 
 		describe 'custom name method' do
 			it 'has full name method that combines first name and last name' do
